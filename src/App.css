@@ -86,7 +86,7 @@ body {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* LAYOUT — Grille 2 colonnes */
+/* LAYOUT */
 
 
 
@@ -140,7 +140,6 @@ body {
   cursor: default;
 }
 
-/* Fond : blobs radiaux */
 .landing-bg {
   position: fixed;
   inset: 0;
@@ -221,7 +220,6 @@ body {
   );
 }
 
-/* Blob 5 — accent ambre/rose chaleureux, centré, dérive douce */
 .landing-blob--5 {
   width: 60vmax;
   height: 60vmax;
@@ -357,14 +355,12 @@ body {
 .landing-texte { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; }
 .landing-texte--note { font-size: 0.85rem; color: var(--text-3); font-style: italic; }
 
-/* Cartes "Pour qui" */
 .landing-cards-qui {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
-/* Pour qui — layout staggeré */
 .landing-audience {
   display: flex;
   flex-direction: column;
@@ -418,7 +414,6 @@ body {
   margin: 0;
 }
 
-/* Comment ça marche */
 .landing-how {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -524,7 +519,6 @@ body {
   }
 }
 
-/* Bas de landing : confidentialité + précision côte à côte */
 .landing-footer-blocks {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -599,14 +593,12 @@ body {
   opacity: 0.6;
 }
 
-/* Optimisations performance mobile */
 @media (max-width: 768px) {
   .landing-blob {
     width: 65vmax;
     height: 65vmax;
     opacity: 0.5;
     transition: none;
-    /* Mouvement scroll désactivé en mobile pour alléger le GPU */
     transform: none !important;
   }
 
@@ -702,15 +694,12 @@ body {
   user-select: none;
 }
 
-/* App layout */
-
 .app {
   display: grid;
   grid-template-columns: var(--sidebar-w) 1fr;
   min-height: 100vh;
 }
 
-/* Contenu principal */
 .app-content {
   min-height: 100vh;
   padding: 2.5rem 2.5rem 3rem 3.5rem;
@@ -718,13 +707,11 @@ body {
   background: transparent;
 }
 
-/* Le mesh fixed doit passer sous le contenu de l'app */
 .app {
   position: relative;
   z-index: 1;
 }
 
-/* Transitions entre vues */
 .view-panel--inactive {
   display: none;
 }
@@ -1097,12 +1084,8 @@ body {
 
 .sidebar-legal-sep { color: var(--sidebar-text-dimmer); user-select: none; }
 
-/* SAISIE — layout 2 colonnes */
+/* SAISIE */
 
-/* Grille form + aside
-   - form : flexible, cap à 580
-   - aside : plus large pour que le calendrier 12 mois soit lisible
-   - resources : cap aussi, sinon la colonne prend toute la largeur */
 .saisie-layout {
   display: grid;
   grid-template-columns: minmax(0, 560px) minmax(300px, 340px) minmax(240px, 300px);
@@ -1118,7 +1101,6 @@ body {
   gap: 2rem;
 }
 
-/* Aside contextuel */
 .saisie-aside {
   display: flex;
   flex-direction: column;
@@ -1157,7 +1139,6 @@ body {
   color: var(--text-4);
 }
 
-/* "Comment ça fonctionne?" — bigger prominent card */
 .ctx-card--how-faded {
   background: transparent;
   border-color: transparent;
@@ -1196,7 +1177,6 @@ body {
 }
 .ctx-how-chevron--open { transform: rotate(180deg); color: var(--violet-mid); }
 
-/* Hint inline (étape 1, fonds détectés) */
 .ctx-aside-hint {
   display: flex;
   align-items: flex-start;
@@ -1249,7 +1229,6 @@ body {
   line-height: 1.65;
 }
 
-/* Fonds info (étape 1) */
 .ctx-fund {
   display: flex;
   gap: 0.75rem;
@@ -1312,7 +1291,6 @@ body {
   line-height: 1.45;
 }
 
-/* Récap mois (étape 2) */
 .ctx-fonds-recap {
   display: flex;
   flex-direction: column;
@@ -1354,7 +1332,6 @@ body {
   border-top: 1px solid var(--border);
 }
 
-/* Colonne ressources (3e colonne) */
 .saisie-resources {
   position: sticky;
   top: 1.5rem;
@@ -1364,7 +1341,6 @@ body {
   gap: 1rem;
 }
 
-/* Carte ressources + compteur 2025 */
 .ctx-card--resources {
   background: rgba(124,58,237,0.04);
   border-color: rgba(124,58,237,0.09);
@@ -1374,7 +1350,6 @@ body {
   padding: 1.4rem 1.6rem;
 }
 
-/* Toggle ressources */
 .ctx-res-toggle {
   display: flex;
   align-items: center;
@@ -1395,7 +1370,6 @@ body {
 }
 .ctx-res-chevron--open { transform: rotate(180deg); color: var(--violet-mid); }
 
-/* Corps collapsible */
 .ctx-res-body {
   display: grid;
   grid-template-rows: 0fr;
@@ -1496,7 +1470,6 @@ body {
 }
 .ctx-lexique-link:hover { opacity: 1; text-decoration: underline; }
 
-/* Contact & retours (carte ressources) */
 .ctx-contact-link {
   display: flex;
   align-items: center;
@@ -1531,7 +1504,6 @@ body {
 }
 .ctx-contact-disclaimer a:hover { color: var(--violet-mid); }
 
-/* Infos pratiques intégrées sous les résultats */
 .resultats-pratique {
   display: flex;
   flex-direction: column;
@@ -1586,7 +1558,6 @@ body {
   line-height: 1.5;
 }
 
-/* Footer contact (page résultats) */
 .resultats-contact-footer {
   margin-top: 2.5rem;
   padding: 1rem 0;
@@ -1769,7 +1740,6 @@ body {
   margin: 0 0 0.5rem;
 }
 
-/* Panier live (aside étapes 1 & 2) */
 .ctx-panier-header {
   display: flex;
   align-items: center;
@@ -1860,7 +1830,6 @@ body {
   font-weight: 700;
 }
 
-/* Lien dans l'aside */
 .ctx-link-row {
   display: flex;
   align-items: center;
@@ -1882,7 +1851,6 @@ body {
 .ctx-link-row svg { flex-shrink: 0; opacity: 0.5; }
 .ctx-link-row:hover svg { opacity: 1; }
 
-/* Texte info dans l'aside */
 .ctx-info-text {
   font-size: 0.76rem;
   color: var(--text-2);
@@ -1927,7 +1895,6 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* Employeurs recap (étape 2) */
 .ctx-employer-row {
   display: flex;
   justify-content: space-between;
@@ -2021,7 +1988,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Récap aside (page résultats) */
 .recap-card {
   gap: 0.85rem;
 }
@@ -2090,9 +2056,6 @@ body {
   border-color: rgba(124,58,237,0.3);
 }
 
-/* HABILLAGE ZONE VIDE — v3 */
-
-/* Chips de suggestions sous la searchbar */
 .search-suggestions {
   margin-top: 0.9rem;
   display: flex;
@@ -2138,7 +2101,6 @@ body {
 }
 .search-suggestion-chip:active { transform: translateY(0); }
 
-/* Aperçu ghost de la liste employeurs */
 .ghost-preview {
   margin-top: 1.8rem;
   display: flex;
@@ -2202,7 +2164,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Teaser année 2025 (grille 12 mois dans l'aside) */
 .year-preview { gap: 0.55rem; padding: 1rem 1.1rem; }
 .year-preview-head {
   display: flex;
@@ -2273,7 +2234,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Compteur base INSEE + répartition fonds */
 .data-count { gap: 0.6rem; padding: 1rem 1.1rem; }
 .data-count-head {
   display: flex;
@@ -2332,7 +2292,6 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Tableau de stats factuelles */
 .data-count-stats {
   margin: 0.5rem 0 0;
   padding: 0.55rem 0 0;
@@ -2407,7 +2366,6 @@ body {
 
 /* BOUTONS */
 
-/* CTA principal */
 .btn-voir-droits {
   padding: 0.85rem 2.25rem;
   background: var(--violet-mid);
@@ -2444,7 +2402,6 @@ body {
   filter: none;
 }
 
-/* Bouton ajouter employeur */
 .btn-ajouter-employeur {
   width: 100%;
   padding: 0.85rem 1rem;
@@ -2556,7 +2513,6 @@ body {
   max-width: 600px;
 }
 
-/* Disclaimer (page intermédiaire avant résultats) */
 .disclaimer-view {
   display: flex;
   align-items: center;
@@ -2706,7 +2662,6 @@ body {
 
 .search-input {
   width: 100%;
-  /* padding-right élargi pour laisser la place à la croix / spinner */
   padding: 0.9rem 2.55rem 0.9rem 1.15rem;
   font-size: 0.95rem;
   border: 2px solid rgba(124, 58, 237, 0.55);
@@ -2737,7 +2692,6 @@ body {
   animation: spin 0.6s linear infinite;
 }
 
-/* Bouton clear — croix à droite quand la searchbar n'est pas vide */
 .search-clear {
   position: absolute;
   right: 0.65rem;
@@ -2763,7 +2717,6 @@ body {
 }
 .search-clear:active { transform: translateY(-50%) scale(0.92); }
 
-/* Accessible mais invisible — honeypot, captions screen-reader, etc. */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2874,7 +2827,7 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* EMPLOYER CARDS — entrée animée */
+/* EMPLOYER CARDS */
 
 .employer-cards {
   list-style: none;
@@ -2939,7 +2892,6 @@ body {
 .badge-idcc { background: var(--surface-2); color: var(--text-3); border: 1px solid var(--border); }
 .convention-titre { font-size: 0.8rem; color: var(--text-3); }
 
-/* Fonds trouvé */
 .fonds-found {
   border-left: 3px solid;
   padding: 0.6rem 0.85rem;
@@ -2963,7 +2915,6 @@ body {
 
 .fonds-unknown { font-size: 0.85rem; color: var(--text-4); font-style: italic; }
 
-/* IDCC manuel */
 .idcc-manual       { display: flex; flex-direction: column; gap: 0.6rem; }
 .idcc-manual-hint  { font-size: 0.82rem; color: var(--text-2); line-height: 1.5; }
 .idcc-manual-options { display: flex; flex-direction: column; gap: 0.35rem; }
@@ -3007,7 +2958,6 @@ body {
 
 /* MONTH SELECTOR */
 
-/* Employer card (étape 2) */
 .month-cards { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .month-card {
@@ -3090,7 +3040,6 @@ body {
   .month-select-all:hover { background: rgba(255,255,255,0.07); }
 }
 
-/* Footer : progress bar + count */
 .month-card-footer {
   display: flex;
   flex-direction: column;
@@ -3264,12 +3213,10 @@ body {
 .qf-parts-hint    { font-size: 0.72rem; color: var(--text-4); margin-top: 0.2rem; }
 .qf-avis-hint     { font-size: 0.78rem; color: var(--text-3); margin-bottom: 0.5rem; font-style: italic; }
 
-/* Masquer les flèches natives sur les inputs number (RFR) */
 .qf-input::-webkit-inner-spin-button,
 .qf-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 .qf-input[type=number] { -moz-appearance: textfield; }
 
-/* Stepper custom (enfants) */
 .qf-stepper {
   display: inline-flex;
   align-items: center;
@@ -3347,7 +3294,6 @@ body {
 .qf-preview-line--fnas .qf-preview-label { color: var(--violet-mid); }
 .qf-preview-detail { font-size: 0.78rem; color: var(--text-3); }
 
-/* Bouton "Affiner" — révèle les champs enfants / handicap */
 .qf-show-more {
   display: flex;
   align-items: center;
@@ -3466,8 +3412,6 @@ body {
 }
 .rfr-help-pdf-link:hover { opacity: 0.7; }
 
-/* RÉSULTATS — barèmes & totaux */
-
 .results-casc {
   display: flex;
   flex-direction: column;
@@ -3537,7 +3481,6 @@ body {
 .results-bareme-desc    { font-size: 0.78rem; color: var(--text-3); margin-top: 0.25rem; line-height: 1.45; }
 .results-bareme-detail  { font-size: 0.75rem; color: var(--text-3); margin-top: 0.3rem; }
 
-/* Montant — info principale, mise en avant */
 .results-bareme-montant {
   font-family: var(--font-mono);
   font-size: 2.25rem;
@@ -3688,8 +3631,6 @@ body {
 
 /* RESPONSIVE MOBILE */
 
-/* Palier intermédiaire : sous 1240px, les 3 colonnes tiennent mal,
-   on bascule en 2 colonnes (form + aside) et on passe resources en bas. */
 @media (max-width: 1240px) {
   .saisie-layout {
     grid-template-columns: minmax(0, 560px) minmax(280px, 340px);
@@ -3703,25 +3644,20 @@ body {
     gap: 1rem;
     max-width: 920px;
   }
-  /* dans ce mode, la data-count reste à côté des ressources */
 }
 
 @media (max-width: 960px) {
   .saisie-layout {
     grid-template-columns: 1fr;
   }
-  /* Réordonne : form puis panier sticky, puis resources tout en bas */
   .saisie-form      { order: 1; }
   .saisie-aside     { order: 2; }
   .saisie-resources { order: 3; position: static; display: flex; grid-template-columns: none; }
 
   .saisie-aside {
-    position: sticky;
-    top: 0.5rem;
-    z-index: 5;
+    position: static;
     flex-direction: column;
   }
-  /* Sur mobile, on masque la grosse carte d'aide pour ne garder que le panier sticky */
   .saisie-aside .ctx-card--how { display: none; }
   .ctx-panier {
     background: color-mix(in srgb, var(--surface) 92%, transparent);
@@ -3812,32 +3748,26 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Sidebar encore plus sombre pour se distinguer du contenu */
-    --sidebar-bg:     #08071a; /* conservé pour compatibilité mobile */
+    --sidebar-bg:     #08071a;
     --sidebar-border: rgba(255, 255, 255, 0.07);
 
-    /* Fond principal sombre (indigo nuit, pas noir pur) */
     --bg:        #10101f;
     --surface:   #18172d;
     --surface-2: #131225;
 
-    /* Bordures claires sur fond sombre */
     --border:   rgba(255, 255, 255, 0.07);
     --border-2: rgba(255, 255, 255, 0.12);
 
-    /* Texte clair */
     --text-1: #f0eeff;
     --text-2: #c8c2e8;
     --text-3: #a49bd0;
     --text-4: #8580b8;
 
-    /* Ombres adaptées au fond sombre */
     --shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
     --shadow-sm: 0 2px 6px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25);
     --shadow-md: 0 4px 16px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.2);
     --shadow-lg: 0 12px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
 
-    /* Violet légèrement plus lumineux pour contraster sur fond sombre */
     --violet:       #6d28d9;
     --violet-mid:   #8b5cf6;
     --violet-light: #a78bfa;
@@ -3846,13 +3776,11 @@ body {
     --violet-glow:  rgba(167, 139, 250, 0.25);
   }
 
-  /* Sidebar semi-transparente sur fond sombre */
   .sidebar {
     background: rgba(8, 7, 26, 0.30);
   }
 
 
-  /* Dropdown sombre */
   .search-dropdown {
     background: #1c1a30;
     border-color: rgba(255,255,255,0.1);
@@ -3866,13 +3794,11 @@ body {
   }
   .dropdown-separator { background: rgba(255,255,255,0.03); }
 
-  /* Fonds found — simple teinte violette, sans halo */
   .fonds-found {
     background: rgba(139,92,246,0.07);
     border-left-width: 3px;
   }
 
-  /* Employer card — rehausse discrète en dark */
   .employer-card {
     background: rgba(255,255,255,0.025);
     border-color: rgba(255,255,255,0.06);
@@ -3888,7 +3814,6 @@ body {
       0 0 0 1px rgba(167,139,250,0.18);
   }
 
-  /* Chips suggestions — ajustements dark */
   .search-suggestion-chip {
     background: rgba(255,255,255,0.035);
     border-color: rgba(255,255,255,0.08);
@@ -3900,7 +3825,6 @@ body {
     color: var(--violet-light);
   }
 
-  /* Ghost preview — ajustements dark */
   .ghost-preview-item {
     background: rgba(255,255,255,0.015);
     border-color: rgba(255,255,255,0.08);
@@ -3909,46 +3833,38 @@ body {
   .ghost-preview-bar,
   .ghost-preview-tag { background: rgba(255,255,255,0.05); }
 
-  /* Year preview — cellules plus nettes en dark */
   .year-preview-cell {
     background: rgba(255,255,255,0.03);
     border-color: rgba(255,255,255,0.05);
     color: var(--text-3);
   }
 
-  /* Data count — accent violet-light en dark */
   .data-count-num { color: var(--violet-light); }
 
-  /* QF preview */
   .qf-preview {
     background: linear-gradient(135deg, rgba(109,40,217,0.12) 0%, rgba(109,40,217,0.06) 100%);
     border-color: rgba(109,40,217,0.25);
   }
 
-  /* Estimation banner */
   .estimation-banner {
     background: rgba(109,40,217,0.1);
     border-color: rgba(109,40,217,0.2);
   }
 
-  /* IDCC option hover */
   .idcc-option:hover { background: rgba(139,92,246,0.1); }
 
-  /* Month card */
   .month-card {
     background: var(--surface);
     border-color: rgba(255,255,255,0.08);
   }
   .month-card-progress { background: rgba(255,255,255,0.08); }
 
-  /* Month btn */
   .month-btn {
     background: rgba(255,255,255,0.07);
     border-color: rgba(255,255,255,0.12);
     color: var(--text-1);
   }
 
-  /* Landing — fond sombre + blobs plus lumineux, en mode lueur */
   .landing-bg {
     background: #0b0a1d;
   }
