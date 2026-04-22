@@ -147,7 +147,7 @@ export function LandingPage({ onStart }) {
         </nav>
         <div className="landing-footer-socials">
           <a
-            href="https://github.com/Nctrn17/Jaugeapp"
+            href="https://github.com/Nctrn17/Jauge"
             target="_blank"
             rel="noopener noreferrer"
             className="landing-footer-github"
