@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>À propos — Jauge</title>
+    <meta name="description" content="Jauge est une initiative bénévole et indépendante pour aider les travailleurs de la culture à estimer leurs droits d'action sociale CASC-SVP et FNAS." />
+    <link rel="canonical" href="https://jauge.app/a-propos.html" />
+    <link rel="stylesheet" href="/fonts.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jauge.app/a-propos.html" />
+    <meta property="og:title" content="À propos — Jauge" />
+    <meta property="og:locale" content="fr_FR" />
+    <style>
+      :root {
+        --bg-page:    #faf7ff;
+        --violet:     #5b21b6;
+        --violet-mid: #7c3aed;
+        --surface:    rgba(250, 247, 255, 0.50);
+        --text-1:     #0d0820;
+        --text-2:     #3c3660;
+        --text-3:     #6a658d;
+        --text-4:     #9d98b8;
+        --border:     rgba(15, 8, 40, 0.09);
+        --border-2:   rgba(15, 8, 40, 0.13);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-page:  #0b0a1d;
+          --surface:  rgba(14, 12, 35, 0.50);
+          --text-1:   #ede9ff;
+          --text-2:   #b0aacf;
+          --text-3:   #7a748f;
+          --text-4:   #524e6a;
+          --border:   rgba(255, 255, 255, 0.07);
+          --border-2: rgba(255, 255, 255, 0.11);
+        }
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { font-size: 16px; }
+      body {
+        font-family: 'Geist', system-ui, -apple-system, sans-serif;
+        background: var(--bg-page);
+        color: var(--text-1);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+      .page-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+      .blob { position: absolute; width: 80vmax; height: 80vmax; border-radius: 50%; opacity: 0.7; mix-blend-mode: multiply; }
+      .blob-1 { top: -25vmax; left: -20vmax; background: radial-gradient(circle at center, rgba(124,58,237,0.55) 0%, rgba(124,58,237,0.28) 30%, rgba(124,58,237,0) 62%); }
+      .blob-2 { top: -20vmax; right: -25vmax; background: radial-gradient(circle at center, rgba(59,130,246,0.50) 0%, rgba(59,130,246,0.24) 30%, rgba(59,130,246,0) 62%); }
+      .blob-3 { bottom: -30vmax; left: -15vmax; background: radial-gradient(circle at center, rgba(16,185,129,0.45) 0%, rgba(2,132,199,0.22) 30%, rgba(16,185,129,0) 62%); }
+      .blob-4 { bottom: -22vmax; right: -20vmax; background: radial-gradient(circle at center, rgba(167,139,250,0.50) 0%, rgba(167,139,250,0.24) 30%, rgba(167,139,250,0) 62%); }
+      .blob-5 { width: 60vmax; height: 60vmax; top: 10vmax; left: 50%; margin-left: -30vmax; background: radial-gradient(circle at center, rgba(236,72,153,0.30) 0%, rgba(251,146,60,0.15) 35%, rgba(236,72,153,0) 62%); }
+      @media (prefers-color-scheme: dark) {
+        .blob { opacity: 0.45; mix-blend-mode: screen; }
+        .blob-1 { background: radial-gradient(circle at center, rgba(139,92,246,0.55) 0%, rgba(139,92,246,0.25) 30%, rgba(139,92,246,0) 62%); }
+        .blob-2 { background: radial-gradient(circle at center, rgba(96,165,250,0.50) 0%, rgba(96,165,250,0.22) 30%, rgba(96,165,250,0) 62%); }
+        .blob-3 { background: radial-gradient(circle at center, rgba(34,211,238,0.45) 0%, rgba(56,189,248,0.20) 30%, rgba(34,211,238,0) 62%); }
+        .blob-4 { background: radial-gradient(circle at center, rgba(167,139,250,0.55) 0%, rgba(167,139,250,0.25) 30%, rgba(167,139,250,0) 62%); }
+        .blob-5 { opacity: 0.4; background: radial-gradient(circle at center, rgba(251,146,60,0.35) 0%, rgba(236,72,153,0.18) 30%, rgba(251,146,60,0) 62%); }
+      }
+      .page-wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+      .page-header { display: flex; align-items: center; justify-content: space-between; padding: 28px 0 36px; }
+      .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-1); }
+      .logo-name { font-family: 'Unbounded', sans-serif; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+      .back-link { font-size: 0.875rem; font-weight: 500; color: var(--text-3); text-decoration: none; transition: color 0.15s; }
+      .back-link:hover { color: var(--violet-mid); }
+      .page-card {
+        background: var(--surface);
+        backdrop-filter: blur(24px) saturate(1.4);
+        -webkit-backdrop-filter: blur(24px) saturate(1.4);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 44px 52px 52px;
+      }
+      @media (max-width: 640px) { .page-card { padding: 28px 22px 36px; } }
+      h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 36px; }
+      h2 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; margin-top: 36px; margin-bottom: 12px; color: var(--text-1); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+      p { margin-bottom: 10px; color: var(--text-2); }
+      a { color: var(--violet-mid); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      strong { color: var(--text-1); font-weight: 600; }
+      .page-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--text-4); }
+      .page-footer a { color: var(--text-3); text-decoration: none; transition: color 0.15s; }
+      .page-footer a:hover { color: var(--violet-mid); }
+      .page-footer span { color: var(--text-4); user-select: none; }
+    </style>
+  </head>
+  <body>
+
+    <div class="page-bg" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="blob blob-4"></div>
+      <div class="blob blob-5"></div>
+    </div>
+
+    <div class="page-wrap">
+      <header class="page-header">
+        <a href="/" class="logo-link" aria-label="Retour à l'accueil Jauge">
+          <svg width="36" height="32" viewBox="0 0 44 38" fill="none" aria-hidden="true">
+            <path d="M 5.5 4 C 5.6 13 5.8 22 6 31"    stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+            <path d="M 14 3 C 14 12 13.8 21 13.5 30"   stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+            <path d="M 22 5 C 22.1 14 22.3 22 22.5 31" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+            <path d="M 30.5 4 C 30.6 13 30.4 22 30 30" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+            <path d="M 1 32 C 12 26 25 18 40 8"         stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-name">Jauge</span>
+        </a>
+        <a href="/" class="back-link">← Retour au simulateur</a>
+      </header>
+
+      <main class="page-card">
+        <h1>À propos de Jauge</h1>
+
+        <h2>Pourquoi Jauge ?</h2>
+        <p>
+          Ce simulateur est une initiative bénévole et indépendante, sans but lucratif.
+          Jauge est conçu pour que chaque travailleur·euse de la culture puisse estimer
+          ses prestations en quelques clics.
+        </p>
+        <p>
+          L'accès aux acquis sociaux peut sembler parfois complexe. Jauge vient
+          comme un outil d'aiguillage complémentaire aux structures officielles.
+        </p>
+
+        <h2>Philosophie</h2>
+        <p>
+          L'outil est gratuit et garantit une confidentialité totale. Aucune donnée n'est
+          collectée, stockée, ou transmise. Ce projet a été développé seul, ce qui me
+          permet une transparence totale avec le public. Tout le processus reste
+          local, au sein de votre navigateur.
+        </p>
+        <p>
+          Jauge s'appuie exclusivement sur des données publiques, mises à disposition de toustes.
+        </p>
+
+        <h2>En soutien aux fonds d'action sociale</h2>
+        <p>
+          Jauge s'appuie sur les grilles de calcul du CASC-SVP et du FNAS, dont le travail
+          de solidarité est essentiel à nos métiers. L'objectif est d'encourager le recours
+          à ces droits en rendant l'étape du calcul plus accessible et moins intimidante.
+        </p>
+
+        <h2>Qui suis-je ?</h2>
+        <p>
+          Je suis un travailleur de la culture, comme plein de gens. Mon but n'est pas de
+          créer une "marque", mais de mettre mes connaissances au service du collectif pour
+          que chacun·e puisse mieux comprendre et solliciter ses droits. Je suis donc très
+          friand de vos retours, critiques ou suggestions pour faire évoluer l'outil.
+        </p>
+        <p><a href="mailto:contact@jauge.app">contact@jauge.app</a></p>
+      </main>
+
+      <footer class="page-footer">
+        <a href="/">Accueil</a>
+        <span aria-hidden="true">·</span>
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <span aria-hidden="true">·</span>
+        <a href="/politique-de-confidentialite.html">Confidentialité</a>
+      </footer>
+    </div>
+
+  </body>
+</html>

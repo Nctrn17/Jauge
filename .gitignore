@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-check
+.env
+.env.local
+.env*.local
+
+# Vite dev server temp files
+vite.config.js.timestamp-*
+
+# Fichiers locaux non publiés
+_design-ref
+CLAUDE.md
+VISION.md
+.claude/

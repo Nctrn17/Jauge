@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Jauge — Simulateur CASC-SVP et FNAS pour le spectacle vivant</title>
+    <meta name="description" content="Simulateur gratuit et confidentiel pour estimer vos droits CASC-SVP et FNAS. Conçu pour les salariés du spectacle vivant — intermittents et permanents." />
+    <link rel="canonical" href="https://jauge.app/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jauge.app/" />
+    <meta property="og:title" content="Jauge — Estimez vos droits CASC-SVP et FNAS" />
+    <meta property="og:description" content="Simulateur gratuit et confidentiel pour les salariés du spectacle vivant. Estimez vos droits d'action sociale en quelques clics." />
+    <meta property="og:image" content="https://jauge.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Jauge" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jauge — Estimez vos droits CASC-SVP et FNAS" />
+    <meta name="twitter:description" content="Simulateur gratuit et confidentiel pour les salariés du spectacle vivant." />
+    <meta name="twitter:image" content="https://jauge.app/og-image.png" />
+
+    <link rel="alternate" hreflang="fr" href="https://jauge.app/" />
+    <link rel="alternate" hreflang="x-default" href="https://jauge.app/" />
+
+    <link rel="preconnect" href="https://recherche-entreprises.api.gouv.fr" />
+
+    <script src="/preview-noindex.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://jauge.app/#website",
+          "url": "https://jauge.app/",
+          "name": "Jauge",
+          "description": "Simulateur de droits CASC-SVP et FNAS pour les salariés du spectacle vivant",
+          "inLanguage": "fr-FR",
+          "publisher": { "@id": "https://jauge.app/#organization" }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://jauge.app/#webapplication",
+          "url": "https://jauge.app/",
+          "name": "Jauge — Simulateur CASC-SVP et FNAS",
+          "description": "Outil gratuit d'estimation des droits d'action sociale (CASC-SVP et FNAS) pour les salariés du spectacle vivant privé et des entreprises artistiques et culturelles. Calcul entièrement local, sans inscription ni collecte de données.",
+          "inLanguage": "fr-FR",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "featureList": [
+            "Estimation des droits CASC-SVP",
+            "Estimation des droits FNAS",
+            "Détection automatique du fonds via IDCC employeur",
+            "Calcul local, aucune donnée transmise"
+          ],
+          "publisher": { "@id": "https://jauge.app/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://jauge.app/#organization",
+          "name": "Jauge",
+          "url": "https://jauge.app/",
+          "description": "Jauge est un outil citoyen d'estimation des droits d'action sociale pour les salariés du spectacle vivant.",
+          "inLanguage": "fr-FR",
+          "foundingLocation": { "@type": "Country", "name": "France" },
+          "sameAs": []
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <h1>Jauge — Simulateur CASC-SVP et FNAS</h1>
+      <p>Jauge est un simulateur gratuit et confidentiel qui permet aux salariés du spectacle vivant (intermittents et permanents) d'estimer leurs droits auprès des deux fonds d'action sociale de la branche :</p>
+      <ul>
+        <li><strong>CASC-SVP</strong> — Comité d'Action Sociale et Culturelle du Spectacle Vivant Privé, pour les salariés relevant de la convention collective du spectacle vivant privé.</li>
+        <li><strong>FNAS</strong> — Fonds National d'Action Sociale, pour les salariés relevant de la convention collective des entreprises artistiques et culturelles.</li>
+      </ul>
+      <p>Le calcul est effectué localement dans votre navigateur. Aucune donnée personnelle n'est transmise ni stockée. L'outil ne nécessite pas de JavaScript pour être consulté ? Si, en effet — <strong>activez JavaScript pour lancer le simulateur</strong>.</p>
+      <p>Pages utiles : <a href="/a-propos.html">À propos</a> · <a href="/mentions-legales.html">Mentions légales</a> · <a href="/politique-de-confidentialite.html">Politique de confidentialité</a></p>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+# Jauge — Simulateur CASC-SVP et FNAS
+
+> Outil gratuit d'estimation des droits d'action sociale (CASC-SVP et FNAS) pour les salariés français du spectacle vivant — intermittents et permanents. Calcul entièrement client-side, sans inscription ni collecte de données.
+
+## À propos
+
+- [Présentation](https://jauge.app/a-propos.html) : Mission, méthodologie, barèmes utilisés et mise à jour.
+
+## Fonds couverts
+
+- **CASC-SVP** — Comité d'Action Sociale et Culturelle du Spectacle Vivant Privé, pour les salariés relevant de la convention collective du spectacle vivant privé (IDCC 3090).
+- **FNAS** — Fonds National d'Action Sociale, pour les salariés relevant de la convention collective des entreprises artistiques et culturelles (IDCC 1285).
+
+## Comment ça marche
+
+1. L'utilisateur ajoute ses employeurs (recherche par nom ou SIREN via l'API publique `recherche-entreprises.api.gouv.fr`).
+2. Le fonds est détecté automatiquement via l'IDCC de chaque employeur.
+3. L'utilisateur indique les mois travaillés en 2025 et, en option, son quotient familial.
+4. Jauge affiche une estimation indicative des droits par fonds, avec le détail des barèmes appliqués.
+
+## Limites
+
+- Les activités déclarées via GUSO ou CEA ne sont pas prises en compte dans le calcul.
+- L'estimation est indicative : le droit réel dépend de la situation individuelle vérifiée par chaque fonds.
+- Barèmes mis à jour au 1er avril 2026.
+
+## Pages légales
+
+- [Mentions légales](https://jauge.app/mentions-legales.html)
+- [Politique de confidentialité](https://jauge.app/politique-de-confidentialite.html)
