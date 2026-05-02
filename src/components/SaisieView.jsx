@@ -1,9 +1,9 @@
 import { useState, useRef } from 'react'
-import { SearchBar }     from './SearchBar'
-import { EmployerList }  from './EmployerList'
+import { SearchBar } from './SearchBar'
+import { EmployerList } from './EmployerList'
 import { MonthSelector } from './MonthSelector'
-import { QFCalculator }  from './QFCalculator'
-import { ContactModal }  from './ContactModal'
+import { QFCalculator } from './QFCalculator'
+import { ContactModal } from './ContactModal'
 import { getFondsForIdcc, getIdccFromEmployer, FONDS_MAP } from '../data/fonds'
 import { cleanNom } from '../hooks/useSearch'
 
@@ -15,7 +15,6 @@ const EXEMPLES_STRUCTURES = [
   'Mains d\'Œuvres',            // Saint-Ouen — fabrique de culture
 ]
 
-/* Aperçu ghost (préfiguration liste employeurs) */
 function GhostPreview() {
   return (
     <div className="ghost-preview" aria-hidden="true">
@@ -33,7 +32,6 @@ function GhostPreview() {
   )
 }
 
-/* Teaser année 2025 (grille 12 mois, aperçu étape 2) */
 const TRIMESTRES = [
   { label: 'T1', mois: ['Janv.', 'Févr.', 'Mars'] },
   { label: 'T2', mois: ['Avr.',  'Mai',   'Juin'] },
@@ -68,7 +66,6 @@ function YearPreview() {
   )
 }
 
-/* Compteur base INSEE + répartition fonds */
 function DataCount() {
   const fondsEntries = Object.entries(FONDS_MAP) // [idcc, fonds]
   return (
@@ -123,7 +120,6 @@ function DataCount() {
   )
 }
 
-/* Lien ressource */
 function ResLink({ href, tag, tagColor, children }) {
   const arrow = (
     <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true" className="ctx-resource-arrow">
@@ -141,7 +137,6 @@ function ResLink({ href, tag, tagColor, children }) {
   )
 }
 
-/* Lexique item (toujours visible) */
 function LexiqueItem({ term, children }) {
   return (
     <div className="ctx-lexique-item">
@@ -151,7 +146,6 @@ function LexiqueItem({ term, children }) {
   )
 }
 
-/* Carte ressources permanente */
 export function ResourcesCard() {
   const [showContact, setShowContact] = useState(false)
   const [openRes, setOpenRes]         = useState(false)
@@ -229,7 +223,6 @@ export function ResourcesCard() {
   )
 }
 
-/* Comment ça fonctionne (collapsible) */
 function HowItWorks({ faded = false }) {
   const [open, setOpen] = useState(false)
   return (
@@ -251,7 +244,7 @@ function HowItWorks({ faded = false }) {
       </button>
       {open && (
         <ol id="ctx-how-body" className="ctx-steps-list--big">
-          <li>Ajoutez chacun de vos employeurs de l'année 2025.</li>
+          <li>Ajoutez chacun de vos employeurs récents.</li>
           <li>Indiquez vos mois de présence. 1h de présence dans le mois suffit.</li>
           <li>Indiquez vos revenus ainsi que la composition de votre foyer.</li>
           <li>Obtenez une estimation de vos droits.</li>
@@ -261,7 +254,6 @@ function HowItWorks({ faded = false }) {
   )
 }
 
-/* Panneau droit : panier live */
 function SaisieAside({ saisieStep, fonds, employers, idccOverrides, selectionsMois }) {
   const hasEmployers = employers.length > 0
 
@@ -346,7 +338,6 @@ function SaisieAside({ saisieStep, fonds, employers, idccOverrides, selectionsMo
   )
 }
 
-/* Vue principale */
 export function SaisieView({
   saisieStep, onNextStep, onPrevStep,
   employers, idccOverrides, onAdd, onRemove, onIdccOverride,
@@ -363,11 +354,9 @@ export function SaisieView({
     setShowSearch(false)
   }
 
-  /* hasMois : au moins un employeur avec au moins un mois sélectionné */
   const hasMois = employers.some((emp) => (selectionsMois[emp.siren]?.size ?? 0) > 0)
   const canSubmit = qfReady && hasMois
 
-  /* Tranches max atteintes : calculées par fonds (union des mois de tous les employeurs du fonds) */
   const tranchesMaxAtteintes = fonds.filter((f) => {
     const sirens = employers
       .filter((emp) => {
@@ -389,7 +378,6 @@ export function SaisieView({
     />
   )
 
-  /* ÉTAPE 1 : Employeurs */
   if (saisieStep === 1) {
     return (
       <div className="saisie-layout">
@@ -458,7 +446,6 @@ export function SaisieView({
     )
   }
 
-  /* ÉTAPE 2 : Périodes + QF */
   return (
     <div className="saisie-layout">
       <div className="saisie-form">

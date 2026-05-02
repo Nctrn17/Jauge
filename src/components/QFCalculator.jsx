@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { RFRHelp } from './RFRHelp'
 import { calculerQFFNAS } from '../data/baremes-fnas'
 
-/* Stepper custom */
 function Stepper({ value, onChange, min = 0, max = 10 }) {
   const n = parseInt(value) || 0
   return (
@@ -13,7 +12,11 @@ function Stepper({ value, onChange, min = 0, max = 10 }) {
         onClick={() => onChange(String(Math.max(min, n - 1)))}
         disabled={n <= min}
         aria-label="Diminuer"
-      >−</button>
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 6h8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        </svg>
+      </button>
       <input
         type="number"
         className="qf-stepper-input"
@@ -29,7 +32,11 @@ function Stepper({ value, onChange, min = 0, max = 10 }) {
         onClick={() => onChange(String(Math.min(max, n + 1)))}
         disabled={n >= max}
         aria-label="Augmenter"
-      >+</button>
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M6 2v8M2 6h8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        </svg>
+      </button>
     </div>
   )
 }
@@ -62,7 +69,6 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
   const [handicapAD, setHandicapAD] = useState(iv.handicapAD ?? false)
   const [conjointActif, setConjointActif] = useState(iv.conjointActif ?? false)
 
-  // Phase 3 (enfants / handicap) masquée par défaut sauf si déjà renseignée
   const hasExistingDetail = (parseInt(iv.enfantsExclusifs) || 0) > 0
     || (parseInt(iv.enfantsAlternee) || 0) > 0
     || iv.handicapOD || iv.handicapAD
@@ -71,7 +77,6 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
   const onResultRef = useRef(onResult)
   useEffect(() => { onResultRef.current = onResult })
 
-  // Persiste les valeurs du formulaire vers App.jsx à chaque changement
   useEffect(() => {
     onSave?.({ situation, rfrOD, rfrAD, enfantsExclusifs, enfantsAlternee, handicapOD, handicapAD, conjointActif })
   }, [situation, rfrOD, rfrAD, enfantsExclusifs, enfantsAlternee, handicapOD, handicapAD, conjointActif, onSave])
@@ -90,7 +95,6 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
     : null
   const nbMembres = 1 + (aConjoint ? 1 : 0) + nbExclusifs + nbAlternee
 
-  // Remonte le résultat dès que le QF est valide, sans bouton
   useEffect(() => {
     if (!qf || qf <= 0) return
     onResultRef.current({

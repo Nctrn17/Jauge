@@ -7,15 +7,24 @@ const NOMS_MOIS = [
 
 const cle = ({ mois, annee }) => `${annee}-${mois}`
 
+const isFuturMois = ({ mois, annee }) => {
+  const now = new Date()
+  const yNow = now.getFullYear()
+  const mNow = now.getMonth() + 1
+  return annee > yNow || (annee === yNow && mois > mNow)
+}
+
 export function MonthSelector({ fonds, employeur, selection, onChange, tailleSalaries, onTailleChange }) {
   const [demandePermanent, setDemandePermanent] = useState(false)
   const tranche = Math.min(selection.size, fonds.trancheMax)
   const plafonne = selection.size > fonds.trancheMax
   const isFNAS = fonds.id === 'fnas'
-  const allKeys = fonds.periodeRef.map(cle)
-  const allSelected = allKeys.every((k) => selection.has(k))
+  const moisDispo = fonds.periodeRef.filter((m) => !isFuturMois(m))
+  const allKeys = moisDispo.map(cle)
+  const allSelected = allKeys.length > 0 && allKeys.every((k) => selection.has(k))
 
   const toggleMois = (item) => {
+    if (isFuturMois(item)) return
     const k = cle(item)
     const next = new Set(selection)
     if (next.has(k)) next.delete(k)
@@ -60,11 +69,12 @@ export function MonthSelector({ fonds, employeur, selection, onChange, tailleSal
         {fonds.periodeRef.map((item) => {
           const k = cle(item)
           const checked = selection.has(k)
+          const futur = isFuturMois(item)
           return (
             <button
               key={k}
-              className={`month-btn ${checked ? 'month-btn--active' : ''}`}
-              style={checked ? {
+              className={`month-btn ${checked ? 'month-btn--active' : ''} ${futur ? 'month-btn--futur' : ''}`}
+              style={checked && !futur ? {
                 background: fonds.couleur,
                 borderColor: fonds.couleur,
                 color: 'white',
@@ -72,6 +82,9 @@ export function MonthSelector({ fonds, employeur, selection, onChange, tailleSal
               onClick={() => toggleMois(item)}
               type="button"
               aria-pressed={checked}
+              aria-disabled={futur}
+              disabled={futur}
+              title={futur ? 'Mois à venir' : undefined}
             >
               <span className="month-btn-nom">{NOMS_MOIS[item.mois]}</span>
               <span className="month-btn-annee">{item.annee}</span>
@@ -122,7 +135,6 @@ export function MonthSelector({ fonds, employeur, selection, onChange, tailleSal
   )
 }
 
-/* unused — kept for reference */
 function formatPeriode(periodeRef) {
   if (!periodeRef?.length) return ''
   const debut = periodeRef[0]

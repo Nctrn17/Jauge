@@ -4,7 +4,6 @@ import { ResultsFNAS } from './ResultsFNAS'
 import { ContactModal } from './ContactModal'
 import { ResourcesCard } from './SaisieView'
 
-/* Règles pratiques par fonds */
 const FONDS_PRATIQUE = {
   'casc-svp': [
     'Créer un compte sur casc-svp.fr si ce n\'est pas encore fait - les démarches se font en ligne.',
@@ -18,7 +17,6 @@ const FONDS_PRATIQUE = {
   ],
 }
 
-/* Liens par fonds */
 const FONDS_LINKS = {
   'casc-svp': {
     site:        { label: 'CASC-SVP - site officiel',           url: 'https://www.casc-svp.fr' },
@@ -155,7 +153,7 @@ export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond
               if (!links) return null
               return (
                 <div key={f.id} className="resultats-pratique-card" style={{ borderLeftColor: f.couleur }}>
-                  <p className="resultats-pratique-titre" style={{ color: f.couleur }}>{f.nom} — pour accéder aux aides</p>
+                  <p className="resultats-pratique-titre" style={{ color: f.couleur }}>{f.nom} : pour accéder aux aides</p>
                   <ul className="resultats-pratique-list">
                     {pratique?.map((item, i) => <li key={i}>{item}</li>)}
                   </ul>
@@ -191,7 +189,7 @@ export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond
             <p>
               Pour toute question sur vos droits réels, contactez directement{' '}
               <a href="https://www.casc-svp.fr" target="_blank" rel="noopener noreferrer">le CASC-SVP</a>{' '}
-              ou <a href="https://fnas.net" target="_blank" rel="noopener noreferrer">le FNAS</a> —{' '}
+              ou <a href="https://fnas.net" target="_blank" rel="noopener noreferrer">le FNAS</a>.{' '}
               Jauge ne remplace pas leur expertise.
             </p>
           </div>

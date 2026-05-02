@@ -88,35 +88,25 @@ export default function SimulatorApp({ onHome }) {
 
   const currentStep = vue === 'resultats' ? 3 : saisieStep
 
-  useEffect(() => { window.scrollTo(0, 0) }, [vue, saisieStep])
+  const totalMois = new Set(
+    employers.flatMap((e) => [...(selectionsMois[e.siren] ?? new Set())])
+  ).size
+  const qfValue = Object.values(resultats).find((r) => r?.qf > 0)?.qf ?? null
+  const sidebarStats = {
+    employerCount: employers.length,
+    totalMois,
+    qf: qfValue,
+  }
 
-  useEffect(() => {
-    if (window.innerWidth <= 768) return
-    const root = document.documentElement
-    const onScroll = () => {
-      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
-      root.style.setProperty('--mesh-scroll', (window.scrollY / max).toFixed(3))
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      root.style.removeProperty('--mesh-scroll')
-    }
-  }, [])
+  useEffect(() => { window.scrollTo(0, 0) }, [vue, saisieStep])
 
   return (
     <>
-      <div className="landing-bg" aria-hidden="true">
-        <div className="landing-blob landing-blob--1" />
-        <div className="landing-blob landing-blob--2" />
-        <div className="landing-blob landing-blob--3" />
-        <div className="landing-blob landing-blob--4" />
-        <div className="landing-blob landing-blob--5" />
-      </div>
       <div className="app">
         <Sidebar
           step={currentStep}
           fonds={fonds}
+          stats={sidebarStats}
           onNavigate={(targetStep) => {
             if (targetStep === 1) { setVue('saisie'); setSaisieStep(1) }
             if (targetStep === 2) { setVue('saisie'); setSaisieStep(2) }

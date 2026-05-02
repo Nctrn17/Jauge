@@ -113,7 +113,7 @@ export function ResultsFNAS({ qfFnas, tranche, situation, tailleSalaries }) {
 
       <div className="results-disclaimer">
         Votre enveloppe de {plafonds.plafondGlobal} € est à utiliser librement entre les différentes
-        catégories. Les montants affichés par catégorie sont des plafonds —
+        catégories. Les montants affichés par catégorie sont des plafonds :
         vous ne pouvez pas dépenser plus sur un poste donné, mais vous pouvez répartir le reste
         comme vous le souhaitez. Ces montants sont indicatifs.
       </div>

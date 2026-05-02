@@ -4,9 +4,9 @@ import { getFondsForIdcc, getIdccFromEmployer, getAllIdccsFromEmployer } from '.
 
 function normalizeInput(raw) {
   const stripped = raw.replace(/\s+/g, '')
-  if (/^\d{14}$/.test(stripped)) return stripped.slice(0, 9)  // SIRET → SIREN
-  if (/^\d{9}$/.test(stripped))  return stripped              // SIREN avec espaces → SIREN
-  return raw                                                   // nom : on ne touche à rien
+  if (/^\d{14}$/.test(stripped)) return stripped.slice(0, 9)
+  if (/^\d{9}$/.test(stripped)) return stripped
+  return raw
 }
 
 function looksNumeric(raw) {
@@ -86,11 +86,11 @@ export function SearchBar({ onSelect, alreadyAdded, suggestions }) {
     : null
 
   const filtered = results.filter((r) => !alreadyAdded.includes(r.siren))
-  const coveredResults = filtered.filter((r) => getFondsForIdcc(getIdccFromEmployer(r)) != null)
-  const uncoveredResults = filtered.filter((r) => getFondsForIdcc(getIdccFromEmployer(r)) == null)
+  const covered = filtered.filter((r) => getFondsForIdcc(getIdccFromEmployer(r)) != null)
+  const uncovered = filtered.filter((r) => getFondsForIdcc(getIdccFromEmployer(r)) == null)
   const hasResults = filtered.length > 0
 
-  const renderItem = (r, uncovered = false) => {
+  const renderItem = (r, isUncovered = false) => {
     const idcc = getIdccFromEmployer(r)
     const allIdccs = getAllIdccsFromEmployer(r)
     const fonds = idcc ? getFondsForIdcc(idcc) : null
@@ -101,7 +101,7 @@ export function SearchBar({ onSelect, alreadyAdded, suggestions }) {
     return (
       <li
         key={r.siren}
-        className={`search-dropdown-item ${uncovered ? 'search-dropdown-item--uncovered' : 'search-dropdown-item--covered'}`}
+        className={`search-dropdown-item ${isUncovered ? 'search-dropdown-item--uncovered' : 'search-dropdown-item--covered'}`}
         onMouseDown={() => handleSelect(r)}
       >
         <div className="dropdown-header">
@@ -118,11 +118,11 @@ export function SearchBar({ onSelect, alreadyAdded, suggestions }) {
             <span className="dropdown-commune">{cp && `${cp} `}{commune}</span>
           )}
           {allIdccs.length > 0 && (
-            <span className={`dropdown-idcc ${uncovered ? 'dropdown-idcc--uncovered' : fonds ? 'dropdown-idcc--covered' : ''}`}>
+            <span className={`dropdown-idcc ${isUncovered ? 'dropdown-idcc--uncovered' : fonds ? 'dropdown-idcc--covered' : ''}`}>
               {allIdccs.length === 1
-                ? `IDCC ${allIdccs[0]}${uncovered && titreConvention ? ` - ${titreConvention}` : ''}`
+                ? `IDCC ${allIdccs[0]}${isUncovered && titreConvention ? ` - ${titreConvention}` : ''}`
                 : `IDCC ${allIdccs.join(', ')}`}
-              {uncovered && <span className="dropdown-idcc-tag">non couvert</span>}
+              {isUncovered && <span className="dropdown-idcc-tag">non couvert</span>}
             </span>
           )}
         </div>
@@ -133,6 +133,10 @@ export function SearchBar({ onSelect, alreadyAdded, suggestions }) {
   return (
     <div className="search-container" ref={containerRef}>
       <div className="search-input-wrapper">
+        <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
+        </svg>
         <input
           ref={inputRef}
           type="text"
@@ -182,17 +186,17 @@ export function SearchBar({ onSelect, alreadyAdded, suggestions }) {
 
       {open && hasResults && (
         <ul className="search-dropdown">
-          {coveredResults.length > 0 && uncoveredResults.length > 0 && (
+          {covered.length > 0 && uncovered.length > 0 && (
             <li className="dropdown-separator">Structures couvertes</li>
           )}
-          {coveredResults.map((r) => renderItem(r, false))}
+          {covered.map((r) => renderItem(r, false))}
 
-          {uncoveredResults.length > 0 && (
+          {uncovered.length > 0 && (
             <li className="dropdown-separator dropdown-separator--uncovered">
               Autres structures - convention non couverte
             </li>
           )}
-          {uncoveredResults.map((r) => renderItem(r, true))}
+          {uncovered.map((r) => renderItem(r, true))}
         </ul>
       )}
 

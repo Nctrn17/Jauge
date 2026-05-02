@@ -17,10 +17,6 @@ export function EmployerList({ employers, onRemove, idccOverrides, onIdccOverrid
         const idcc = hasOverride ? idccOverride : idccApi
         const fonds = idcc != null ? getFondsForIdcc(idcc) : null
 
-        // Sélecteur manuel nécessaire si :
-        // - pas d'IDCC couvert dans l'API et pas d'override valide
-        // - ou override explicitement à null ("Autre")
-        // - ou plusieurs IDCCs couverts et pas encore de choix
         const multiCovered = coveredIdccs.length > 1 && !hasOverride
         const showManual = !fonds
 
@@ -41,8 +37,11 @@ export function EmployerList({ employers, onRemove, idccOverrides, onIdccOverrid
                 className="btn-remove"
                 onClick={() => onRemove(emp.siren)}
                 aria-label={`Supprimer ${emp.nom_complet}`}
+                title="Retirer cet employeur"
               >
-                ✕
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
               </button>
             </div>
 
@@ -71,7 +70,10 @@ export function EmployerList({ employers, onRemove, idccOverrides, onIdccOverrid
                     rel="noopener noreferrer"
                     className="fonds-link"
                   >
-                    Voir les prestations →
+                    Voir les prestations
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                      <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </a>
                   {hasOverride && (
                     <button
