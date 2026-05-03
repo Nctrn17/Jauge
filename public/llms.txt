@@ -8,8 +8,13 @@
 
 ## Fonds couverts
 
-- **CASC-SVP** — Comité d'Action Sociale et Culturelle du Spectacle Vivant Privé, pour les salariés relevant de la convention collective du spectacle vivant privé (IDCC 3090).
-- **FNAS** — Fonds National d'Action Sociale, pour les salariés relevant de la convention collective des entreprises artistiques et culturelles (IDCC 1285).
+- **CASC-SVP** — Comité d'Action Sociale et Culturelle du Spectacle Vivant Privé, pour les salariés relevant de la convention collective du spectacle vivant privé (IDCC 3090). [En savoir plus](https://jauge.app/casc-svp.html).
+- **FNAS** — Fonds National d'Activités Sociales des entreprises artistiques et culturelles, pour les salariés relevant de la CCNEAC (IDCC 1285). [En savoir plus](https://jauge.app/fnas.html).
+- [Différence CASC-SVP / FNAS](https://jauge.app/casc-ou-fnas.html) : comprendre quel fonds vous concerne et le cumul possible.
+- [Aides intermittents du spectacle 2026](https://jauge.app/aides-intermittents-spectacle-2026.html) : guide pratique des aides ouvertes en 2026, calendrier et documents à préparer.
+- [Sans tracking : la promesse Jauge](https://jauge.app/sans-tracking.html) : manifeste sur l'absence de collecte de données et de cookies de suivi.
+- [IDCC 1285 et IDCC 3090](https://jauge.app/idcc-spectacle-vivant.html) : les conventions collectives du spectacle vivant, champ d'application et vérification.
+- [Glossaire](https://jauge.app/glossaire.html) : définitions des sigles et termes administratifs du spectacle vivant.
 
 ## Comment ça marche
 

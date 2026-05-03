@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Sans tracking : la promesse Jauge · Jauge</title>
+    <meta name="description" content="Jauge ne collecte aucune donnée personnelle, n'utilise aucun cookie de suivi et ne fait aucun appel analytique. Liste exhaustive de ce qui n'est pas stocké, et comment le vérifier." />
+    <link rel="canonical" href="https://jauge.app/sans-tracking.html" />
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="/legal.css" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://jauge.app/sans-tracking.html" />
+    <meta property="og:title" content="Sans tracking : la promesse Jauge" />
+    <meta property="og:description" content="Jauge ne collecte aucune donnée personnelle. Pas de cookie, pas d'analytique, pas d'inscription. Voici ce que ça veut dire en pratique." />
+    <meta property="og:image" content="https://jauge.app/og-image.png" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Jauge" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Sans tracking : la promesse Jauge",
+      "description": "Manifeste de Jauge sur l'absence de collecte de données et de cookies de suivi.",
+      "inLanguage": "fr-FR",
+      "author": { "@type": "Organization", "name": "Jauge" },
+      "publisher": { "@type": "Organization", "name": "Jauge" },
+      "datePublished": "2026-05-03",
+      "dateModified": "2026-05-03",
+      "mainEntityOfPage": "https://jauge.app/sans-tracking.html"
+    }
+    </script>
+  </head>
+  <body>
+    <nav class="legal-nav" id="nav">
+      <div class="legal-nav-inner">
+        <a href="/" class="legal-brand">
+          <svg class="legal-brand-mark" width="32" height="28" viewBox="0 0 44 38" fill="none" aria-hidden="true">
+            <path d="M 5.5 4 C 5.6 13 5.8 22 6 31"    stroke="currentColor" stroke-width="2.7" stroke-linecap="round" />
+            <path d="M 14 3 C 14 12 13.8 21 13.5 30"   stroke="currentColor" stroke-width="2.7" stroke-linecap="round" />
+            <path d="M 22 5 C 22.1 14 22.3 22 22.5 31" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" />
+            <path d="M 30.5 4 C 30.6 13 30.4 22 30 30" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" />
+            <path d="M 1 32 C 12 26 25 18 40 8"        stroke="currentColor" stroke-width="2.7" stroke-linecap="round" />
+          </svg>
+          Jauge
+        </a>
+        <a href="/" class="legal-back">← Retour au simulateur</a>
+      </div>
+    </nav>
+
+    <div class="legal-wrap">
+      <div class="legal-eyebrow">Manifeste</div>
+      <h1 class="legal-title">Sans tracking. Vraiment.</h1>
+      <p class="legal-lede">
+        Jauge fonctionne sans collecter aucune donnée personnelle,
+        sans cookie de suivi, sans appel analytique. Voici ce que
+        cela signifie en pratique, et comment vous pouvez le
+        vérifier vous-même.
+      </p>
+
+      <div class="legal-content">
+        <section class="legal-section">
+          <h2>La promesse en une phrase</h2>
+          <div class="legal-callout">
+            <strong>Aucune information sur vous ne quitte votre
+            navigateur.</strong> Le calcul de vos droits se fait
+            entièrement en local, sur votre machine. Jauge ne sait
+            pas qui vous êtes, n'a pas de compte utilisateur, ne
+            stocke rien côté serveur.
+          </div>
+        </section>
+
+        <section class="legal-section">
+          <h2>Ce que Jauge ne fait pas</h2>
+          <ul>
+            <li>Pas de compte utilisateur, pas d'inscription, pas d'identifiant.</li>
+            <li>Pas de cookie de suivi, pas de cookie de session, pas de cookie tout court.</li>
+            <li>Pas d'outil analytique tiers : ni Google Analytics, ni Plausible, ni Matomo, ni aucun équivalent, même auto-hébergé.</li>
+            <li>Pas de pixel de tracking, pas de balise Meta, pas de tag manager.</li>
+            <li>Pas d'envoi de vos saisies (employeurs, mois travaillés, quotient familial, revenu fiscal, situation familiale) vers un serveur. Jamais.</li>
+            <li>Pas de stockage local persistant : rien dans <code>localStorage</code>, rien dans <code>sessionStorage</code>, rien en cache long terme.</li>
+            <li>Pas de fingerprinting (canvas, fonts, audio, etc.).</li>
+            <li>Pas de partage de données avec un tiers, qu'il soit commercial, institutionnel ou militant.</li>
+            <li>Pas de publicité, pas de retargeting, pas d'A/B test.</li>
+          </ul>
+        </section>
+
+        <section class="legal-section">
+          <h2>Ce qui se passe quand vous utilisez Jauge</h2>
+          <ol style="display: flex; flex-direction: column; gap: 8px; padding-left: 20px; color: var(--text-2);">
+            <li>Vous chargez la page. Votre navigateur télécharge une fois le code JavaScript et les polices, comme pour n'importe quel site. Aucun pixel n'est appelé.</li>
+            <li>Vous cherchez un employeur. Votre requête part directement vers une API publique de l'État (voir ci-dessous), pas par un serveur Jauge intermédiaire.</li>
+            <li>Vous saisissez vos mois travaillés, votre quotient familial, votre situation. Tout cela reste en mémoire dans l'onglet, en clair, jusqu'à ce que vous fermiez ou rafraîchissiez la page.</li>
+            <li>Le calcul des plafonds CASC-SVP et FNAS s'exécute dans votre navigateur, à partir des barèmes embarqués dans le code de la page.</li>
+            <li>Le résultat s'affiche. Si vous fermez l'onglet, tout est effacé. Si vous rafraîchissez la page, tout est effacé.</li>
+          </ol>
+        </section>
+
+        <section class="legal-section">
+          <h2>La seule connexion vers un tiers</h2>
+          <p>
+            Pour identifier la convention collective d'un employeur,
+            Jauge interroge l'API publique
+            <a href="https://recherche-entreprises.api.gouv.fr/" target="_blank" rel="noopener">recherche-entreprises.api.gouv.fr</a>,
+            opérée par la Direction interministérielle du numérique
+            (DINUM) à partir des données SIRENE de l'INSEE. Cette API
+            est publique, gratuite, sans authentification, et
+            documentée.
+          </p>
+          <p>
+            Votre navigateur envoie un nom d'entreprise ou un SIREN à
+            cette API et reçoit en retour les informations administratives
+            publiques de cet employeur, dont l'IDCC. Aucune information
+            personnelle vous concernant n'est jointe à cette requête.
+            Cette API est soumise au droit français et aux engagements
+            de service public de l'État.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Comment le vérifier vous-même</h2>
+          <h3>Avec les outils de votre navigateur</h3>
+          <p>
+            Ouvrez les outils de développement (F12 sur la plupart
+            des navigateurs), onglet « Réseau ». Utilisez Jauge
+            normalement. Vous verrez exactement les requêtes que
+            votre navigateur émet : aucune ne part vers un serveur
+            d'analytique, de publicité ou de tracking. Les seules
+            connexions externes vont vers
+            <code>recherche-entreprises.api.gouv.fr</code>.
+          </p>
+          <h3>Avec un bloqueur de tracking</h3>
+          <p>
+            uBlock Origin, Privacy Badger ou tout équivalent
+            n'auront rien à bloquer sur Jauge. Aucun script de
+            traceur n'est chargé.
+          </p>
+          <h3>Avec le code source</h3>
+          <p>
+            Le code de Jauge est ouvert, sous licence AGPL-3.0, et
+            publié sur
+            <a href="https://github.com/Nctrn17/Jaugeapp" target="_blank" rel="noopener">GitHub</a>.
+            Vous pouvez l'auditer, le forker, le redéployer.
+            L'absence de tracking est dans le code, pas dans une
+            promesse.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Pourquoi ce choix</h2>
+          <p>
+            Jauge demande des informations sensibles : revenu fiscal
+            de référence, situation familiale, employeurs, mois
+            travaillés. Dans un secteur où la précarité est
+            structurelle et où les rapports avec les institutions
+            sont souvent tendus, demander aux salarié·es d'envoyer
+            ces données à un serveur tiers, même bien intentionné,
+            n'est pas acceptable.
+          </p>
+          <p>
+            Le calcul est de toute façon réalisable en local : les
+            barèmes sont publics, les règles sont publiques, le
+            volume de données traitées est petit. Il n'y a aucune
+            raison technique de centraliser quoi que ce soit.
+          </p>
+          <p>
+            Sortir l'analytique du périmètre est aussi un choix
+            assumé. Savoir combien de personnes utilisent Jauge,
+            d'où elles viennent ou quelles pages elles visitent
+            est intéressant, mais cela demande de stocker des
+            traces. Ces traces, même anonymisées, peuvent être
+            recroisées. La seule façon honnête de tenir la promesse
+            « zéro donnée » est de ne rien collecter.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Comment Jauge sait alors si l'outil est utile ?</h2>
+          <p>
+            En lisant les retours par mail, en parlant avec les
+            syndicats, les fonds et les utilisateur·rices, en
+            regardant les statistiques agrégées que l'hébergeur
+            (Cloudflare Pages) fournit côté serveur sans cookie ni
+            identifiant utilisateur (volume de requêtes, codes de
+            réponse, pays approximatif). Aucune de ces informations
+            ne permet de remonter à une personne.
+          </p>
+          <p>
+            Si vous avez un retour, une critique, un bug à signaler :
+            <a href="mailto:contact@jauge.app">contact@jauge.app</a>.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Standards et conformité</h2>
+          <ul>
+            <li>Conforme au RGPD par absence de traitement de données personnelles.</li>
+            <li>Conforme à la directive ePrivacy (pas de cookie nécessitant consentement).</li>
+            <li>Code source ouvert sous licence AGPL-3.0, garantissant la pérennité de ces choix dans toute version dérivée.</li>
+            <li>Voir aussi la <a href="/politique-de-confidentialite.html">politique de confidentialité</a> et les <a href="/mentions-legales.html">mentions légales</a>.</li>
+          </ul>
+        </section>
+
+        <section class="legal-section">
+          <h2>Estimer vos droits, sans contrepartie</h2>
+          <p>
+            <a href="/">Lancer le simulateur</a>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <footer class="legal-footer">
+      <div>© 2026 Jauge</div>
+      <div>
+        <a href="/">Accueil</a>
+        <a href="/casc-svp.html">CASC-SVP</a>
+        <a href="/fnas.html">FNAS</a>
+        <a href="/casc-ou-fnas.html">CASC ou FNAS</a>
+        <a href="/a-propos.html">À propos</a>
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/politique-de-confidentialite.html">Confidentialité</a>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.getElementById('nav');
+      const onScroll = () => { nav.dataset.scrolled = window.scrollY > 4 ? 'true' : 'false'; };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    </script>
+  </body>
+</html>
