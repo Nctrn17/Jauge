@@ -216,13 +216,13 @@ export function LandingPage({ onStart }) {
               </svg>
             </a>
             <span className="emil-foot-sep" aria-hidden="true">·</span>
-            <a href="/casc-svp.html">CASC-SVP</a>
-            <a href="/fnas.html">FNAS</a>
-            <a href="/casc-ou-fnas.html">CASC ou FNAS</a>
+            <a href="/casc-svp">CASC-SVP</a>
+            <a href="/fnas">FNAS</a>
+            <a href="/casc-ou-fnas">CASC ou FNAS</a>
             <span className="emil-foot-sep" aria-hidden="true">·</span>
-            <a href="/a-propos.html">À propos</a>
-            <a href="/mentions-legales.html">Mentions légales</a>
-            <a href="/politique-de-confidentialite.html">Confidentialité</a>
+            <a href="/a-propos">À propos</a>
+            <a href="/mentions-legales">Mentions légales</a>
+            <a href="/politique-de-confidentialite">Confidentialité</a>
           </div>
         </div>
       </footer>
