@@ -194,7 +194,7 @@ export function LandingPage({ onStart }) {
           <div>© 2026 Jauge. Outil indépendant, non affilié au CASC-SVP ni au FNAS.</div>
           <div className="emil-foot-links">
             <a
-              href="https://github.com/Nctrn17/Jaugeapp"
+              href="https://github.com/Nctrn17/Jauge"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Code source sur GitHub"

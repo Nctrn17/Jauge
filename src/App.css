@@ -72,6 +72,7 @@
 html {
   font-size: 15px;
   color-scheme: light only;
+  scrollbar-gutter: stable;
 }
 
 body {
