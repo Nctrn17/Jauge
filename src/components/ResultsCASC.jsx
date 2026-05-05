@@ -4,7 +4,7 @@ const BAREME_LABELS = [
   { key: 'partenaires',        label: 'Partenaires permanents',    desc: 'Séjours, lecture, parcs, musées, cinéma...' },
   { key: 'abonnTotal',         label: 'Abonnements annuels',       desc: 'Sport, activités artistiques, culture... (cumulable par ayant droit)' },
   { key: 'colonies',           label: 'Colonies de vacances',      desc: 'Plafond global pour tous vos enfants de moins de 18 ans' },
-  { key: 'ete',                label: 'Opération spéciale été',    desc: 'Hors partenaires - modalités disponibles en mai 2026', hidden: true },
+  { key: 'ete',                label: 'Opération spéciale été',    desc: 'Aide ponctuelle pour les vacances d\'été, hors réseau partenaires' },
 ]
 
 export function ResultsCASC({ qf, tranche, situation }) {
