@@ -1,19 +1,19 @@
-/* Jauge — Emil layer (Phase A)
+/* Jauge - Emil layer (Phase A)
    Loaded after App.css. Cascade-wins on Landing, Sidebar, Disclaimer,
    and shared primitives. Subcomponent styles in App.css remain functional
    on the new token palette until Phase B/C/D refactors them. */
 
 /* ============================================================
-   Landing background — kill the blobs, replace with calm void.
+   Landing background - kill the blobs, replace with calm void.
    ============================================================ */
 .landing-bg { display: none; }
 .landing-blob { display: none; }
 
-/* Smooth anchor scrolling — browsers honor prefers-reduced-motion. */
+/* Smooth anchor scrolling - browsers honor prefers-reduced-motion. */
 html { scroll-behavior: smooth; }
 
 /* ============================================================
-   Shared primitives — buttons, cards, inputs.
+   Shared primitives - buttons, cards, inputs.
    ============================================================ */
 .emil-btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -41,7 +41,7 @@ html { scroll-behavior: smooth; }
 .emil-btn:hover .arrow { transform: translateX(3px); }
 
 /* ============================================================
-   Top nav — sticky, hairline border on scroll.
+   Top nav - sticky, hairline border on scroll.
    ============================================================ */
 .emil-nav {
   position: sticky; top: 0; z-index: 50;
@@ -84,7 +84,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* ============================================================
-   Landing — hero + sections + cta band + footer.
+   Landing - hero + sections + cta band + footer.
    ============================================================ */
 .emil-landing {
   min-height: 100vh;
@@ -146,7 +146,7 @@ html { scroll-behavior: smooth; }
 .emil-hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
 .emil-hero-meta svg { color: var(--violet); }
 
-/* Reveal on scroll — staggered. */
+/* Reveal on scroll - staggered. */
 .emil-reveal {
   opacity: 0;
   transform: translateY(8px);
@@ -332,7 +332,7 @@ html { scroll-behavior: smooth; }
 .emil-foot-sep { color: var(--text-4); }
 
 /* ============================================================
-   Sidebar — light surface, ink steps with check states.
+   Sidebar - light surface, ink steps with check states.
    Overrides legacy .sidebar-* rules.
    ============================================================ */
 .sidebar {
@@ -567,7 +567,7 @@ html { scroll-behavior: smooth; }
 .btn-disclaimer-retour:hover { color: var(--text-1); }
 
 /* ============================================================
-   App shell — kill the old vertical paddings, sidebar grid.
+   App shell - kill the old vertical paddings, sidebar grid.
    ============================================================ */
 .app {
   display: grid;
@@ -595,13 +595,13 @@ html { scroll-behavior: smooth; }
   .app-content { padding: 24px 18px 48px; max-width: none; }
 }
 
-/* View panel transitions — fade between saisie and résultats */
+/* View panel transitions - fade between saisie and résultats */
 .view-panel { width: 100%; }
 .view-panel--inactive { display: none; }
 .view-panel--active { display: block; }
 
 /* ============================================================
-   Saisie layout — single column for Phase A.
+   Saisie layout - single column for Phase A.
    The 3-column grid (form | panier | resources) is collapsed:
    form first, then panier, then resources, all stacked vertically.
    Phase B will redesign the panier and resources properly.
@@ -637,19 +637,19 @@ html { scroll-behavior: smooth; }
   top: auto !important;
 }
 
-/* The middle column (panier) is now in the sidebar — hide its main-flow card */
+/* The middle column (panier) is now in the sidebar - hide its main-flow card */
 .saisie-aside .ctx-panier { display: none; }
 /* The hint already appears via sidebar stats; hide the redundant inline one */
 .ctx-aside-hint { display: none; }
-/* "Year preview" teaser is replaced by step 02 copy — hide in main flow */
+/* "Year preview" teaser is replaced by step 02 copy - hide in main flow */
 .year-preview { display: none; }
-/* Resources panel was a 3rd column — keep it but make it discreet at the bottom */
+/* Resources panel was a 3rd column - keep it but make it discreet at the bottom */
 .saisie-resources { margin-top: 16px; }
-/* DataCount card (conventions couvertes / droits max / barèmes...) — redundant with sidebar stats and steps copy */
+/* DataCount card (conventions couvertes / droits max / barèmes...) - redundant with sidebar stats and steps copy */
 .data-count { display: none; }
 
 /* ============================================================
-   Sidebar stats — the always-visible "buoy" recap.
+   Sidebar stats - the always-visible "buoy" recap.
    ============================================================ */
 .sidebar-stats {
   display: flex; flex-direction: column;
@@ -679,7 +679,7 @@ html { scroll-behavior: smooth; }
 .sidebar-stat-unit { color: var(--text-3); font-weight: 400; }
 
 /* ============================================================
-   Modals — Emil styling for AboutModal, ContactModal.
+   Modals - Emil styling for AboutModal, ContactModal.
    ============================================================ */
 .modal-backdrop {
   position: fixed; inset: 0; z-index: 200;
@@ -783,12 +783,12 @@ html { scroll-behavior: smooth; }
 .about-contact-btn svg { color: var(--violet); }
 
 /* ============================================================
-   Phase A polish — overrides for in-flow components that haven't
+   Phase A polish - overrides for in-flow components that haven't
    been refactored yet. Brings them visually in line with Emil
    without touching their JSX.
    ============================================================ */
 
-/* (1) Primary CTAs — unified ink-on-bg with press feedback */
+/* (1) Primary CTAs - unified ink-on-bg with press feedback */
 .btn-voir-droits,
 .btn-ajouter-employeur {
   display: inline-flex; align-items: center; justify-content: center;
@@ -825,7 +825,7 @@ html { scroll-behavior: smooth; }
   opacity: 1 !important;
 }
 
-/* (2) Secondary buttons — ghost variant with hairline border */
+/* (2) Secondary buttons - ghost variant with hairline border */
 .btn-ajouter-cancel,
 .btn-retour {
   display: inline-flex; align-items: center; gap: 6px;
@@ -852,7 +852,7 @@ html { scroll-behavior: smooth; }
 .btn-ajouter-cancel:active,
 .btn-retour:active { transform: scale(0.97); }
 
-/* (3) Search input — clean focus ring */
+/* (3) Search input - clean focus ring */
 .search-input {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
@@ -870,7 +870,7 @@ html { scroll-behavior: smooth; }
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--text-1) 6%, transparent) !important;
 }
 
-/* (4) Employer cards — Emil hairline + subtle lift */
+/* (4) Employer cards - Emil hairline + subtle lift */
 .employer-card {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
@@ -890,7 +890,7 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* (5) Month buttons — ink solid when pressed, scale on tap */
+/* (5) Month buttons - ink solid when pressed, scale on tap */
 .month-btn {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
@@ -938,7 +938,7 @@ html { scroll-behavior: smooth; }
 .month-btn--futur:active,
 .month-btn[disabled]:active { transform: none !important; }
 
-/* Month card itself — quiet container */
+/* Month card itself - quiet container */
 .month-card {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
@@ -953,7 +953,7 @@ html { scroll-behavior: smooth; }
   background: var(--violet) !important;
 }
 
-/* (6) Estimation banner — discreet card with mono kicker */
+/* (6) Estimation banner - discreet card with mono kicker */
 .estimation-banner {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
@@ -977,7 +977,7 @@ html { scroll-behavior: smooth; }
   margin-top: 4px !important;
 }
 
-/* (7) Disclaimer check — clean square checkbox */
+/* (7) Disclaimer check - clean square checkbox */
 .disclaimer-check {
   display: flex; align-items: flex-start; gap: 10px;
   font-size: 14px;
@@ -1015,7 +1015,7 @@ html { scroll-behavior: smooth; }
   transform: rotate(45deg);
 }
 
-/* (8) Section titles & hints — typography cohesion */
+/* (8) Section titles & hints - typography cohesion */
 .saisie-section-title {
   font-size: clamp(20px, 2.4vw, 26px) !important;
   font-weight: 600 !important;
@@ -1055,7 +1055,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* ============================================================
-   Phase B — sub-components refactor
+   Phase B - sub-components refactor
    SearchBar, EmployerList, MonthSelector details, QFCalculator, RFRHelp
    ============================================================ */
 

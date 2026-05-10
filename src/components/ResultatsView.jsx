@@ -145,7 +145,7 @@ export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond
             })}
           </div>
 
-          {/* Infos pratiques par fonds — intégrées sous les résultats */}
+          {/* Infos pratiques par fonds - intégrées sous les résultats */}
           <div className="resultats-pratique">
             {fonds.map((f) => {
               const links = FONDS_LINKS[f.id]

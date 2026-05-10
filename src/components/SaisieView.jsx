@@ -8,11 +8,11 @@ import { getFondsForIdcc, getIdccFromEmployer, FONDS_MAP } from '../data/fonds'
 import { cleanNom } from '../hooks/useSearch'
 
 const EXEMPLES_STRUCTURES = [
-  'Jolie Môme',                 // IDCC 1285 — compagnie militante, St-Denis
-  'Théâtre du Peuple',          // Bussang — Maurice Pottecher
-  'Les Ateliers Frappaz',       // Villeurbanne — arts de la rue
-  'La Maroquinerie',            // Paris 20e — musiques actuelles privées
-  'Mains d\'Œuvres',            // Saint-Ouen — fabrique de culture
+  'Jolie Môme',                 // IDCC 1285 - compagnie militante, St-Denis
+  'Théâtre du Peuple',          // Bussang - Maurice Pottecher
+  'Les Ateliers Frappaz',       // Villeurbanne - arts de la rue
+  'La Maroquinerie',            // Paris 20e - musiques actuelles privées
+  'Mains d\'Œuvres',            // Saint-Ouen - fabrique de culture
 ]
 
 function GhostPreview() {

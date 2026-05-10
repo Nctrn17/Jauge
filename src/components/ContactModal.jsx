@@ -59,7 +59,7 @@ export function ContactModal({ onClose }) {
                <br /><strong>Jauge ne remplace pas leur expertise.</strong>
             </p>
 
-            {/* Honeypot — caché visuellement et aux lecteurs d'écran, visible aux bots */}
+            {/* Honeypot - caché visuellement et aux lecteurs d'écran, visible aux bots */}
             <input
               type="text"
               name="hp"

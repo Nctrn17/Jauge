@@ -148,7 +148,7 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
 
       
 
-      {/* Phase 3 : enfants, handicap, conjoint actif — masquée par défaut */}
+      {/* Phase 3 : enfants, handicap, conjoint actif - masquée par défaut */}
       {!showMore ? (
         <button
           type="button"

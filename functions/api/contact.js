@@ -24,7 +24,7 @@ export async function onRequestPost({ request, env }) {
 
   const { type, message, email, hp } = body ?? {}
 
-  // Honeypot — les bots remplissent ce champ caché, on fait semblant d'accepter
+  // Honeypot - les bots remplissent ce champ caché, on fait semblant d'accepter
   if (hp) return json({ success: true })
 
   if (typeof message !== 'string' || message.trim().length < 3) {

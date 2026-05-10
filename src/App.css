@@ -1,4 +1,4 @@
-/* Jauge — Design System (Emil / quiet) — Phase A */
+/* Jauge - Design System (Emil / quiet) - Phase A */
 
 :root {
   --font-ui:      'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -7,7 +7,7 @@
   --font-hand:    'Geist', sans-serif;
   --font-help:    'Geist', sans-serif;
 
-  /* Sidebar — light surface, ink text. */
+  /* Sidebar - light surface, ink text. */
   --sidebar-w:           260px;
   --sidebar-bg:          #FFFFFF;
   --sidebar-border:      #E8E7E3;
@@ -15,14 +15,14 @@
   --sidebar-text-dim:    #3A3A38;
   --sidebar-text-dimmer: #9A9A95;
 
-  /* Surfaces — quiet, near-monochrome. */
+  /* Surfaces - quiet, near-monochrome. */
   --bg:        #FBFBFA;
   --surface:   #FFFFFF;
   --surface-2: #F6F5F1;
   --border:    #E8E7E3;
   --border-2:  #DAD9D4;
 
-  /* Accent — deep institutional green. Mapped onto legacy --violet* names
+  /* Accent - deep institutional green. Mapped onto legacy --violet* names
      so existing component styles rebrand without rewrites. */
   --violet:       #1B5E3A;
   --violet-mid:   #1B5E3A;
@@ -31,7 +31,7 @@
   --violet-dim:   rgba(27, 94, 58, 0.06);
   --violet-glow:  rgba(27, 94, 58, 0.14);
 
-  /* Secondary signals — muted, never decorative. */
+  /* Secondary signals - muted, never decorative. */
   --sky:        #5B3D8E;
   --sky-dim:    rgba(91, 61, 142, 0.08);
   --emerald:    #1B5E3A;
@@ -43,14 +43,14 @@
   --text-3: #6E6E6A;
   --text-4: #9A9A95;
 
-  /* Shadows — barely there. */
+  /* Shadows - barely there. */
   --shadow-xs:     0 1px 0 rgba(10,10,10,0.02);
   --shadow-sm:     0 1px 2px rgba(10,10,10,0.04);
   --shadow-md:     0 4px 12px -8px rgba(10,10,10,0.10);
   --shadow-lg:     0 8px 24px -16px rgba(10,10,10,0.12);
   --shadow-violet: 0 1px 0 rgba(27,94,58,0.04), 0 4px 12px -8px rgba(27,94,58,0.18);
 
-  /* Motion — strong custom easings, sub-300ms UI. */
+  /* Motion - strong custom easings, sub-300ms UI. */
   --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --d-press: 140ms;
@@ -154,7 +154,7 @@ body {
 
 
 /* ==========================================================================
-   LANDING — warm / calm
+   LANDING - warm / calm
    ========================================================================== */
 
 .landing {
@@ -165,7 +165,7 @@ body {
   position: relative;
 }
 
-/* Subtle warm tint, single fixed radial — no blobs, no scroll listener */
+/* Subtle warm tint, single fixed radial - no blobs, no scroll listener */
 .landing::before {
   content: '';
   position: fixed;
@@ -2101,7 +2101,7 @@ body {
 .month-btn-nom  { font-size: 0.77rem; font-weight: 600; }
 .month-btn-annee { font-size: 0.63rem; opacity: 0.65; }
 
-/* (tranche-result classes removed — replaced by month-card-footer) */
+/* (tranche-result classes removed - replaced by month-card-footer) */
 
 /* FNAS permanent */
 .fnas-permanent-link {
@@ -2750,4 +2750,4 @@ body {
   .qf-row { flex-direction: column; gap: 0.75rem; }
 }
 
-/* DARK MODE — override des tokens du thème clair */
+/* DARK MODE - override des tokens du thème clair */
