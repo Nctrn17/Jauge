@@ -2,7 +2,7 @@ import { calculerPlafondsCASC, PALIERS_QF, indexPalierQF } from '../data/baremes
 
 const BAREME_LABELS = [
   { key: 'partenaires',        label: 'Partenaires permanents',    desc: 'Séjours, lecture, parcs, musées, cinéma...' },
-  { key: 'abonnTotal',         label: 'Abonnements annuels',       desc: 'Sport, activités artistiques, culture... (cumulable par ayant droit)' },
+  { key: 'abonnTotal',         label: 'Abonnements annuels',       desc: 'Sport, activités artistiques, culture... Un plafond par ayant droit, non transférable.' },
   { key: 'colonies',           label: 'Colonies de vacances',      desc: 'Plafond global pour tous vos enfants de moins de 18 ans' },
   { key: 'ete',                label: 'Opération spéciale été',    desc: 'Aide ponctuelle pour les vacances d\'été, hors réseau partenaires' },
 ]
@@ -52,11 +52,12 @@ export function ResultsCASC({ qf, tranche, situation }) {
               <div className="results-bareme-info">
                 <div className="results-bareme-label">{label}</div>
                 <div className="results-bareme-desc">{desc}</div>
-                {key === 'abonnTotal' && situation.aConjoint && (
+                {key === 'abonnTotal' && (situation.aConjoint || (situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee) > 0) && (
                   <div className="results-bareme-detail">
-                    Vous : {plafonds.abonnOD}€ · Conjoint·e : {plafonds.abonnAD}€
+                    Vous : {plafonds.abonnOD}€
+                    {situation.aConjoint && ` · Conjoint·e : ${plafonds.abonnAD}€`}
                     {(situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee) > 0 &&
-                      ` · Enfants : ${plafonds.abonnTotalEnfants}€`}
+                      ` · ${situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee} enfant${(situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee) > 1 ? 's' : ''} : ${plafonds.abonnOD}€ × ${situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee} = ${plafonds.abonnTotalEnfants}€`}
                   </div>
                 )}
               </div>
