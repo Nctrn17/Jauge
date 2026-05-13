@@ -2485,7 +2485,22 @@ body {
 .results-bareme-info    { flex: 1; min-width: 0; }
 .results-bareme-label   { font-weight: 700; font-size: 0.95rem; color: var(--text-1); }
 .results-bareme-desc    { font-size: 0.78rem; color: var(--text-3); margin-top: 0.25rem; line-height: 1.45; }
-.results-bareme-detail  { font-size: 0.75rem; color: var(--text-3); margin-top: 0.3rem; }
+.results-bareme-detail  {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--text-3);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.results-bareme-detail strong {
+  color: var(--text-1);
+  font-weight: 600;
+}
 
 .results-bareme-montant {
   font-family: var(--font-mono);

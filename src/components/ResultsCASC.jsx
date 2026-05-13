@@ -52,14 +52,16 @@ export function ResultsCASC({ qf, tranche, situation }) {
               <div className="results-bareme-info">
                 <div className="results-bareme-label">{label}</div>
                 <div className="results-bareme-desc">{desc}</div>
-                {key === 'abonnTotal' && (situation.aConjoint || (situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee) > 0) && (
-                  <div className="results-bareme-detail">
-                    Vous : {plafonds.abonnOD}€
-                    {situation.aConjoint && ` · Conjoint·e : ${plafonds.abonnAD}€`}
-                    {(situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee) > 0 &&
-                      ` · ${situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee} enfant${(situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee) > 1 ? 's' : ''} : ${plafonds.abonnOD}€ × ${situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee} = ${plafonds.abonnTotalEnfants}€`}
-                  </div>
-                )}
+                {key === 'abonnTotal' && (situation.aConjoint || (situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee) > 0) && (() => {
+                  const nbEnfants = situation.nbEnfantsGardeExclusive + situation.nbEnfantsGardeAlternee
+                  return (
+                    <div className="results-bareme-detail">
+                      Vous : <strong>{plafonds.abonnOD}€</strong>
+                      {situation.aConjoint && <> · Conjoint·e : <strong>{plafonds.abonnAD}€</strong></>}
+                      {nbEnfants > 0 && <> · {nbEnfants} enfant{nbEnfants > 1 ? 's' : ''} : <strong>{plafonds.abonnOD}€</strong> chacun</>}
+                    </div>
+                  )
+                })()}
               </div>
               {hidden
                 ? <div className="results-bareme-soon">Bientôt disponible</div>
