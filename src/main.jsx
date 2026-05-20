@@ -1,6 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
+const BUILD = '2026-05-20-r1'
+if (typeof window !== 'undefined') window.__JAUGE_BUILD__ = BUILD
+
 import '@fontsource/geist/400.css'
 import '@fontsource/geist/500.css'
 import '@fontsource/geist/700.css'
