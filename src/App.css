@@ -1,6 +1,7 @@
 /* Jauge - Design System (Emil / quiet) - Phase A */
 
 :root {
+  --build-id: '2026-05-20-r1';
   --font-ui:      'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono:    'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --font-display: 'Geist', sans-serif;
