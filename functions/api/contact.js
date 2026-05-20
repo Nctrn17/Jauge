@@ -59,9 +59,6 @@ export async function onRequestPost({ request, env }) {
     }),
   })
 
-  if (!resp.ok) {
-    const errBody = await resp.text().catch(() => '')
-    return json({ success: false, debug: { status: resp.status, body: errBody.slice(0, 500) } }, 500)
-  }
+  if (!resp.ok) return json({ success: false }, 500)
   return json({ success: true })
 }
