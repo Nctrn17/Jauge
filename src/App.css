@@ -2767,3 +2767,91 @@ body {
 }
 
 /* DARK MODE - override des tokens du thème clair */
+
+/* AUCUN FONDS DÉTECTÉ - message de sortie de l'étape 1 */
+.saisie-nofonds {
+  margin-top: 1.25rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--border, #e4e4e0);
+  border-left: 3px solid #d97706;
+  border-radius: 8px;
+  background: #fffbf3;
+}
+.saisie-nofonds p {
+  margin: 0 0 0.6rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-2, #444);
+}
+.saisie-nofonds p:last-child { margin-bottom: 0; }
+.saisie-nofonds-title {
+  font-weight: 600;
+  color: var(--text-1, #0a0a0a) !important;
+}
+.saisie-nofonds a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* ACTIONS RÉSULTATS - imprimer / copier le lien */
+.resultats-actions {
+  margin-top: 1.5rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--border, #e4e4e0);
+  border-radius: 8px;
+}
+.resultats-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.resultats-action-btn {
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--border, #d8d8d4);
+  border-radius: 6px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-1, #0a0a0a);
+}
+.resultats-action-btn:hover { background: rgba(0, 0, 0, 0.04); }
+.resultats-actions-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-3, #777);
+}
+
+/* IMPRESSION - uniquement les résultats et le rappel d'estimation */
+.print-only { display: none; }
+
+@media print {
+  .sidebar,
+  .saisie-aside,
+  .saisie-resources,
+  .resultats-actions,
+  .resultats-pratique,
+  .resultats-contact-footer,
+  .btn-retour,
+  .recap-edit {
+    display: none !important;
+  }
+  .print-only { display: block; }
+  .app { display: block; }
+  .saisie-layout,
+  .saisie-layout--resultats {
+    display: block;
+    max-width: none;
+  }
+  .app-content { padding: 0; }
+  body { background: #fff; }
+  .resultats-fonds-bloc,
+  .estimation-banner {
+    break-inside: avoid;
+  }
+  .estimation-banner {
+    border: 1px solid #d8d8d4;
+  }
+}

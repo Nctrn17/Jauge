@@ -47,6 +47,38 @@ function LinkRow({ href, children }) {
 }
 
 
+function ResultActions({ shareUrl }) {
+  const [copied, setCopied] = useState(false)
+
+  const copierLien = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2500)
+    } catch {
+      window.prompt('Copiez le lien ci-dessous :', shareUrl)
+    }
+  }
+
+  return (
+    <div className="resultats-actions">
+      <div className="resultats-actions-row">
+        <button type="button" className="resultats-action-btn" onClick={() => window.print()}>
+          Imprimer / enregistrer en PDF
+        </button>
+        <button type="button" className="resultats-action-btn" onClick={copierLien}>
+          {copied ? 'Lien copié ✓' : 'Copier le lien de cette estimation'}
+        </button>
+      </div>
+      <p className="resultats-actions-note">
+        Le lien contient votre saisie (employeurs, mois, revenu fiscal), encodée dans
+        l'adresse elle-même&nbsp;: rien n'est stocké sur nos serveurs. Ne le partagez
+        qu'avec une personne de confiance.
+      </p>
+    </div>
+  )
+}
+
 function RecapAside({ employerCount, totalMois, qf, onRetour }) {
   return (
     <aside className="saisie-aside">
@@ -76,7 +108,7 @@ function RecapAside({ employerCount, totalMois, qf, onRetour }) {
   )
 }
 
-export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond, taillesByFond, resultats, onRetour }) {
+export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond, taillesByFond, resultats, shareUrl, onRetour }) {
   const [showContact, setShowContact] = useState(false)
   const hasBoth = fonds.some((f) => f.id === 'casc-svp') && fonds.some((f) => f.id === 'fnas')
 
@@ -92,6 +124,10 @@ export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond
 
           <div className="estimation-banner">
             <div className="estimation-banner-titre">Estimation de vos droits</div>
+            <p className="estimation-banner-texte print-only">
+              Document généré par Jauge (jauge.app) à partir des informations saisies par
+              l'utilisateur, supposées exactes.
+            </p>
             <p className="estimation-banner-texte">
               Ces montants sont <strong>indicatifs</strong>. Ils{' '}
               <strong>
@@ -144,6 +180,8 @@ export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond
               )
             })}
           </div>
+
+          <ResultActions shareUrl={shareUrl} />
 
           {/* Infos pratiques par fonds - intégrées sous les résultats */}
           <div className="resultats-pratique">

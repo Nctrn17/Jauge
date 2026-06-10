@@ -426,6 +426,25 @@ export function SaisieView({
               </div>
             )}
 
+            {/* Aucun fonds détecté : on explique pourquoi le parcours s'arrête là */}
+            {employers.length > 0 && fonds.length === 0 && (
+              <div className="saisie-nofonds" role="status">
+                <p className="saisie-nofonds-title">Aucun fonds détecté pour le moment</p>
+                <p>
+                  Jauge couvre uniquement le CASC-SVP (convention du spectacle vivant privé,
+                  IDCC 3090) et le FNAS (entreprises artistiques et culturelles, IDCC 1285).
+                  Si aucun de vos employeurs ne relève de ces deux conventions, nous ne
+                  pouvons pas estimer vos droits.
+                </p>
+                <p>
+                  La convention prise en compte est celle déclarée par l'employeur dans la base
+                  SIRENE. Si cette déclaration est erronée, les droits ne s'ouvrent de toute
+                  façon qu'après régularisation par l'employeur.{' '}
+                  <a href="/idcc-spectacle-vivant">Comprendre les conventions du spectacle vivant</a>
+                </p>
+              </div>
+            )}
+
             {/* Bouton Continuer - toujours visible dès qu'un fonds est détecté */}
             {fonds.length > 0 && (
               <div className="saisie-cta">

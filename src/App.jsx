@@ -5,7 +5,8 @@ import { ContactModal } from './components/ContactModal'
 const SimulatorApp = lazy(() => import('./SimulatorApp'))
 
 export default function App() {
-  const [vue, setVue] = useState('landing')
+  const [vue, setVue] = useState(() =>
+    new URLSearchParams(window.location.search).has('s') ? 'simulator' : 'landing')
   const [contactFromUrl, setContactFromUrl] = useState(false)
 
   useEffect(() => {

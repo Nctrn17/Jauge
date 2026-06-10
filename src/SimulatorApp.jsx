@@ -3,6 +3,7 @@ import { SaisieView } from './components/SaisieView'
 import { ResultatsView } from './components/ResultatsView'
 import { Sidebar } from './components/Sidebar'
 import { getFondsForIdcc, getIdccFromEmployer } from './data/fonds'
+import { buildShareUrl, readShareFromUrl, clearShareFromUrl } from './share'
 
 function fondsDetectes(employers, idccOverrides) {
   const found = new Map()
@@ -17,14 +18,23 @@ function fondsDetectes(employers, idccOverrides) {
 }
 
 export default function SimulatorApp({ onHome }) {
-  const [saisieStep, setSaisieStep] = useState(1)
+  const [restored] = useState(readShareFromUrl)
+  const [saisieStep, setSaisieStep] = useState(restored ? 2 : 1)
   const [vue, setVue] = useState('saisie')
-  const [employers, setEmployers] = useState([])
-  const [idccOverrides, setIdccOverrides] = useState({})
-  const [selectionsMois, setSelectionsMois] = useState({})
-  const [taillesSalaries, setTaillesSalaries] = useState({})
+  const [employers, setEmployers] = useState(() =>
+    restored?.e.map((x) => ({ siren: x.s, nom_complet: x.n })) ?? [])
+  const [idccOverrides, setIdccOverrides] = useState(() =>
+    restored ? Object.fromEntries(restored.e.map((x) => [x.s, x.i])) : {})
+  const [selectionsMois, setSelectionsMois] = useState(() =>
+    restored
+      ? Object.fromEntries(Object.entries(restored.m ?? {}).map(([s, arr]) => [s, new Set(arr)]))
+      : {})
+  const [taillesSalaries, setTaillesSalaries] = useState(() => restored?.t ?? {})
   const [resultats, setResultats] = useState({})
-  const [qfSaved, setQfSaved] = useState(null)
+  const [qfSaved, setQfSaved] = useState(restored?.q ?? null)
+
+  // L'URL est nettoyée après restauration : la saisie ne survit pas à un refresh.
+  useEffect(() => { clearShareFromUrl() }, [])
 
   const addEmployer = (employer) =>
     setEmployers((prev) => prev.some((e) => e.siren === employer.siren) ? prev : [...prev, employer])
@@ -100,6 +110,17 @@ export default function SimulatorApp({ onHome }) {
 
   useEffect(() => { window.scrollTo(0, 0) }, [vue, saisieStep])
 
+  const shareUrl = buildShareUrl({
+    e: employers.map((emp) => ({
+      s: emp.siren,
+      n: emp.nom_complet ?? emp.nom,
+      i: idccOverrides[emp.siren] ?? getIdccFromEmployer(emp),
+    })),
+    m: Object.fromEntries(employers.map((e) => [e.siren, [...(selectionsMois[e.siren] ?? new Set())]])),
+    t: taillesSalaries,
+    q: qfSaved,
+  })
+
   return (
     <>
       <div className="app">
@@ -148,6 +169,7 @@ export default function SimulatorApp({ onHome }) {
               tranchesByFond={tranchesByFond}
               taillesByFond={taillesByFond}
               resultats={resultats}
+              shareUrl={shareUrl}
               onRetour={() => { setVue('saisie'); setSaisieStep(2) }}
             />
           </div>
