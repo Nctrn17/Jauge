@@ -83,10 +83,7 @@ export function EmployerList({ employers, onRemove, idccOverrides, onIdccOverrid
                   </div>
                 </div>
               ) : fonds ? (
-                <div
-                  className="fonds-found"
-                  style={{ borderLeftColor: fonds.couleur }}
-                >
+                <div className="fonds-found">
                   <div className="fonds-nom" style={{ color: fonds.couleur }}>
                     {fonds.nom}
                   </div>

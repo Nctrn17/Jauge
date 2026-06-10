@@ -90,7 +90,7 @@ export function DroitsOuvertsCheck({ fonds, employers, selectionsMois }) {
   }
 
   return (
-    <div className="resultats-pratique-card" style={{ borderLeftColor: fonds.couleur }}>
+    <div className="resultats-pratique-card">
       <p className="resultats-pratique-titre" style={{ color: fonds.couleur }}>
         {fonds.nom}&nbsp;: vérifier que vos droits s'ouvrent bien
       </p>

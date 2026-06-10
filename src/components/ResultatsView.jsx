@@ -153,7 +153,7 @@ export function ResultatsView({ fonds, employers, idccOverrides, selectionsMois,
 
               return (
                 <div key={f.id} className="resultats-fonds-bloc">
-                  <div className="resultats-fonds-header" style={{ borderLeftColor: f.couleur }}>
+                  <div className="resultats-fonds-header">
                     <span className="resultats-fonds-nom" style={{ color: f.couleur }}>{f.nom}</span>
                     <span className="resultats-fonds-convention">{f.convention}</span>
                     <a
@@ -198,7 +198,7 @@ export function ResultatsView({ fonds, employers, idccOverrides, selectionsMois,
               const pratique = FONDS_PRATIQUE[f.id]
               if (!links) return null
               return (
-                <div key={f.id} className="resultats-pratique-card" style={{ borderLeftColor: f.couleur }}>
+                <div key={f.id} className="resultats-pratique-card">
                   <p className="resultats-pratique-titre" style={{ color: f.couleur }}>{f.nom} : pour accéder aux aides</p>
                   <ul className="resultats-pratique-list">
                     {pratique?.map((item, i) => <li key={i}>{item}</li>)}
@@ -248,6 +248,10 @@ export function ResultatsView({ fonds, employers, idccOverrides, selectionsMois,
               <a href="https://www.casc-svp.fr" target="_blank" rel="noopener noreferrer">le CASC-SVP</a>{' '}
               ou <a href="https://fnas.net" target="_blank" rel="noopener noreferrer">le FNAS</a>.{' '}
               Jauge ne remplace pas leur expertise.
+            </p>
+            <p>
+              Pour comprendre vos droits en détail (fonds, conventions, vocabulaire),{' '}
+              <a href="/guides">consultez les guides Jauge</a>.
             </p>
           </div>
 

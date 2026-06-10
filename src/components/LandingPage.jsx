@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-const Check = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
-    <path d="M5 12l5 5L20 7" />
-  </svg>
-)
-
 export function LandingPage({ onStart }) {
   const [scrolled, setScrolled] = useState(false)
   const revealRefs = useRef(new Set())
@@ -53,7 +47,8 @@ export function LandingPage({ onStart }) {
           </button>
           <div className="emil-nav-links">
             <a className="emil-nav-link" href="#pour-qui">Pour qui</a>
-            <a className="emil-nav-link" href="#methode">Méthode</a>
+            <a className="emil-nav-link" href="/guides#methode">Méthode</a>
+            <a className="emil-nav-link" href="/guides">Guides</a>
             <button type="button" className="emil-nav-link" onClick={onStart}>Commencer</button>
           </div>
         </div>
@@ -78,13 +73,12 @@ export function LandingPage({ onStart }) {
             <button type="button" className="emil-btn emil-btn-primary" onClick={onStart}>
               Commencer l'estimation <span className="arrow" aria-hidden="true">→</span>
             </button>
-            <a className="emil-btn emil-btn-ghost" href="#methode">Comment ça marche</a>
+            <a className="emil-btn emil-btn-ghost" href="/guides#methode">Comment ça marche</a>
           </div>
-          <div ref={trackReveal} data-d="4" className="emil-hero-meta emil-reveal">
-            <span><Check /> Calcul client-side</span>
-            <span><Check /> Aucune donnée stockée</span>
-            <span><Check /> Open source</span>
-          </div>
+          <p ref={trackReveal} data-d="4" className="emil-hero-meta emil-reveal">
+            Tout se calcule dans votre navigateur&nbsp;: aucune donnée n'est stockée,
+            et le code est public.
+          </p>
         </div>
       </header>
 
@@ -132,45 +126,6 @@ export function LandingPage({ onStart }) {
         </div>
       </section>
 
-      <section className="emil-section" id="methode" style={{ paddingTop: 0 }}>
-        <div className="emil-wrap">
-          <div className="emil-section-head">
-            <div>
-              <div className="emil-section-tag">Méthode</div>
-              <h2 className="emil-section-title">Trois étapes. Cinq minutes.</h2>
-            </div>
-          </div>
-
-          <div className="emil-steps">
-            <div className="emil-step">
-              <div className="emil-step-num">01</div>
-              <h3 className="emil-step-title">Vos employeurs</h3>
-              <p className="emil-step-desc">
-                Recherche par nom ou SIREN. Le fonds est détecté automatiquement
-                via l'IDCC. Vous pouvez le corriger.
-              </p>
-            </div>
-            <div className="emil-step">
-              <div className="emil-step-num">02</div>
-              <h3 className="emil-step-title">Vos mois travaillés</h3>
-              <p className="emil-step-desc">
-                Pour chaque employeur, sélectionnez les mois travaillés.
-                Renseignez vos revenus et la composition du foyer pour affiner
-                votre quotient familial.
-              </p>
-            </div>
-            <div className="emil-step">
-              <div className="emil-step-num">03</div>
-              <h3 className="emil-step-title">Vos droits estimés</h3>
-              <p className="emil-step-desc">
-                Détail par fonds, montant indicatif, et les conditions à vérifier
-                auprès des organismes pour confirmer.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="emil-section" style={{ paddingTop: 0 }}>
         <div className="emil-wrap">
           <div className="emil-cta-band">
@@ -183,7 +138,7 @@ export function LandingPage({ onStart }) {
               <button type="button" className="emil-btn emil-btn-primary" onClick={onStart}>
                 Commencer <span className="arrow" aria-hidden="true">→</span>
               </button>
-              <a className="emil-btn emil-btn-ghost" href="#methode">Lire la méthode complète</a>
+              <a className="emil-btn emil-btn-ghost" href="/guides#methode">Lire la méthode complète</a>
             </div>
           </div>
         </div>
@@ -216,6 +171,7 @@ export function LandingPage({ onStart }) {
               </svg>
             </a>
             <span className="emil-foot-sep" aria-hidden="true">·</span>
+            <a href="/guides">Guides</a>
             <a href="/casc-svp">CASC-SVP</a>
             <a href="/fnas">FNAS</a>
             <a href="/casc-ou-fnas">CASC ou FNAS</a>

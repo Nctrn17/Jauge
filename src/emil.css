@@ -238,47 +238,6 @@ html { scroll-behavior: smooth; }
 }
 .emil-tag-accent { background: var(--violet-pale); color: var(--violet); }
 
-/* Steps */
-.emil-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-@media (max-width: 720px) { .emil-steps { grid-template-columns: 1fr; } }
-.emil-step {
-  padding: 32px 28px;
-  border-right: 1px solid var(--border);
-  position: relative;
-  background: var(--surface);
-  transition: background var(--d-fast) ease;
-}
-.emil-step:last-child { border-right: 0; }
-@media (max-width: 720px) {
-  .emil-step { border-right: 0; border-bottom: 1px solid var(--border); }
-  .emil-step:last-child { border-bottom: 0; }
-}
-.emil-step-num {
-  font-family: var(--font-mono);
-  font-size: 11px; color: var(--text-3); letter-spacing: 0.04em;
-}
-.emil-step-title {
-  margin: 12px 0 8px;
-  font-size: 17px; font-weight: 600; letter-spacing: -0.01em;
-}
-.emil-step-desc { color: var(--text-2); font-size: 14px; line-height: 1.55; }
-.emil-step::before {
-  content: ""; position: absolute;
-  left: 28px; right: 28px; bottom: -1px;
-  height: 1px; background: var(--violet);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform var(--d-slow) var(--ease-out);
-}
-@media (hover: hover) and (pointer: fine) {
-  .emil-step:hover::before { transform: scaleX(1); }
-}
-
 /* CTA band */
 .emil-cta-band {
   background: var(--text-1);
@@ -1307,7 +1266,6 @@ html { scroll-behavior: smooth; }
   padding: 12px 14px;
   background: var(--surface-2);
   border-radius: var(--radius-sm);
-  border-left: 2px solid var(--violet) !important;
 }
 .fonds-nom {
   font-size: 13px; font-weight: 600;

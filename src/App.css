@@ -27,6 +27,7 @@
      so existing component styles rebrand without rewrites. */
   --violet:       #1B5E3A;
   --violet-mid:   #1B5E3A;
+  --violet-dark:  #134228;
   --violet-light: #2E7A52;
   --violet-pale:  #E8F0EB;
   --violet-dim:   rgba(27, 94, 58, 0.06);
@@ -615,13 +616,11 @@ body {
 }
 .resultats-pratique-card {
   border: 1px solid var(--border);
-  border-left: 3px solid var(--violet-mid);
   border-radius: 10px;
   padding: 1.1rem 1.3rem;
   background: var(--surface);
 }
 .resultats-pratique-card--cumul {
-  border-left-color: var(--text-3);
   background: var(--surface-2, var(--surface));
 }
 .resultats-pratique-titre {
@@ -1628,6 +1627,12 @@ body {
   line-height: 1.55;
 }
 
+.estimation-banner-texte a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .resultats-fonds {
   display: flex;
   flex-direction: column;
@@ -1641,9 +1646,8 @@ body {
 }
 
 .resultats-fonds-header {
-  border-left: 3px solid;
   background: var(--surface);
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px;
   padding: 0.65rem 1rem;
   display: flex;
   flex-direction: column;
@@ -1894,10 +1898,10 @@ body {
 .convention-titre { font-size: 0.8rem; color: var(--text-3); }
 
 .fonds-found {
-  border-left: 3px solid;
+  border: 1px solid var(--border);
   padding: 0.6rem 0.85rem;
-  background: rgba(91,33,182,0.04);
-  border-radius: 0 8px 8px 0;
+  background: var(--surface);
+  border-radius: 8px;
 }
 
 .fonds-nom    { font-weight: 700; font-size: 0.9rem; }
