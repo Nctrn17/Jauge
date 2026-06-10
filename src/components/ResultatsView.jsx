@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { ResultsCASC } from './ResultsCASC'
 import { ResultsFNAS } from './ResultsFNAS'
 import { ContactModal } from './ContactModal'
+import { DroitsOuvertsCheck } from './DroitsOuvertsCheck'
+import { getFondsForIdcc, getIdccFromEmployer } from '../data/fonds'
 import { ResourcesCard } from './SaisieView'
 
 const FONDS_PRATIQUE = {
@@ -108,7 +110,12 @@ function RecapAside({ employerCount, totalMois, qf, onRetour }) {
   )
 }
 
-export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond, taillesByFond, resultats, shareUrl, onRetour }) {
+export function ResultatsView({ fonds, employers, idccOverrides, selectionsMois, tranchesByFond, taillesByFond, resultats, shareUrl, onRetour }) {
+  const employersDuFonds = (fondsId) =>
+    employers.filter((e) => {
+      const idcc = idccOverrides?.[e.siren] ?? getIdccFromEmployer(e)
+      return getFondsForIdcc(idcc)?.id === fondsId
+    })
   const [showContact, setShowContact] = useState(false)
   const hasBoth = fonds.some((f) => f.id === 'casc-svp') && fonds.some((f) => f.id === 'fnas')
 
@@ -133,7 +140,8 @@ export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond
               <strong>
                 supposent que vos employeurs sont à jour de leurs cotisations et déclarations
                 nominatives (DSN)
-              </strong>. En cas de doute, contactez directement le fonds concerné.
+              </strong>. En cas de doute, contactez directement le fonds concerné.{' '}
+              <a href="#verifier-droits">Comment vérifier que c'est bien le cas&nbsp;?</a>
             </p>
           </div>
 
@@ -203,6 +211,17 @@ export function ResultatsView({ fonds, employers, selectionsMois, tranchesByFond
                 </div>
               )
             })}
+
+            <div id="verifier-droits">
+              {fonds.map((f) => (
+                <DroitsOuvertsCheck
+                  key={f.id}
+                  fonds={f}
+                  employers={employersDuFonds(f.id)}
+                  selectionsMois={selectionsMois}
+                />
+              ))}
+            </div>
 
             {hasBoth && (
               <div className="resultats-pratique-card resultats-pratique-card--cumul">

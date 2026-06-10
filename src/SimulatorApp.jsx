@@ -165,6 +165,7 @@ export default function SimulatorApp({ onHome }) {
             <ResultatsView
               fonds={fonds}
               employers={employers}
+              idccOverrides={idccOverrides}
               selectionsMois={selectionsMois}
               tranchesByFond={tranchesByFond}
               taillesByFond={taillesByFond}
