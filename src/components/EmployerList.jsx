@@ -17,14 +17,13 @@ export function EmployerList({ employers, onRemove, idccOverrides, onIdccOverrid
         const idcc = hasOverride ? idccOverride : idccApi
         const fonds = idcc != null ? getFondsForIdcc(idcc) : null
 
-        const multiCovered = coveredIdccs.length > 1 && !hasOverride
-        const showManual = !fonds
+        // Choix à faire quand SIRENE déclare plusieurs conventions couvertes
+        // (et qu'aucun choix n'a encore été fait, ou qu'il a été annulé)
+        const choixMulti = coveredIdccs.length > 1 && (!hasOverride || idccOverride == null)
 
-        const hintManuel = multiCovered
-          ? 'Plusieurs conventions couvertes détectées. Laquelle s\'applique à votre activité ?'
-          : idccApi && !getFondsForIdcc(idccApi) && !hasOverride
-          ? `Convention non couverte (IDCC ${idccApi}${titreApi ? ` - ${titreApi}` : ''}). Si vous pensez que c'est une erreur, précisez ci-dessous :`
-          : 'Convention collective non renseignée dans l\'API. Précisez si cet employeur relève d\'une convention couverte :'
+        const hintNonCouvert = idccApi
+          ? `Convention non couverte (IDCC ${idccApi}${titreApi ? ` - ${titreApi}` : ''}).`
+          : 'Convention collective non renseignée dans la base SIRENE.'
 
         return (
           <li key={emp.siren} className="employer-card">
@@ -55,7 +54,35 @@ export function EmployerList({ employers, onRemove, idccOverrides, onIdccOverrid
                 </div>
               )}
 
-              {fonds ? (
+              {choixMulti ? (
+                <div className="idcc-manual">
+                  <p className="idcc-manual-hint">
+                    Plusieurs conventions couvertes déclarées dans la base SIRENE.
+                    Laquelle s'applique à votre activité&nbsp;?
+                  </p>
+                  <div className="idcc-manual-options">
+                    {CONVENTIONS_COUVERTES.filter((c) => coveredIdccs.includes(c.idcc)).map((c) => (
+                      <label
+                        key={c.idcc}
+                        className={`idcc-option ${idccOverride === c.idcc ? 'idcc-option--active' : ''}`}
+                        style={idccOverride === c.idcc ? { borderColor: c.fonds.couleur, background: `${c.fonds.couleur}10` } : {}}
+                      >
+                        <input
+                          type="radio"
+                          name={`idcc-${emp.siren}`}
+                          value={c.idcc}
+                          checked={idccOverride === c.idcc}
+                          onChange={() => onIdccOverride(emp.siren, c.idcc)}
+                        />
+                        <span className="idcc-option-badge" style={{ background: c.fonds.couleur }}>
+                          {c.fonds.nom}
+                        </span>
+                        <span className="idcc-option-label">{c.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              ) : fonds ? (
                 <div
                   className="fonds-found"
                   style={{ borderLeftColor: fonds.couleur }}
@@ -75,7 +102,7 @@ export function EmployerList({ employers, onRemove, idccOverrides, onIdccOverrid
                       <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
-                  {hasOverride && (
+                  {hasOverride && coveredIdccs.length > 1 && (
                     <button
                       className="btn-reset-idcc"
                       onClick={() => onIdccOverride(emp.siren, null)}
@@ -86,40 +113,11 @@ export function EmployerList({ employers, onRemove, idccOverrides, onIdccOverrid
                 </div>
               ) : (
                 <div className="idcc-manual">
-                  <p className="idcc-manual-hint">{hintManuel}</p>
-                  <div className="idcc-manual-options">
-                    {CONVENTIONS_COUVERTES.map((c) => (
-                      <label
-                        key={c.idcc}
-                        className={`idcc-option ${idccOverride === c.idcc ? 'idcc-option--active' : ''}`}
-                        style={idccOverride === c.idcc ? { borderColor: c.fonds.couleur, background: `${c.fonds.couleur}10` } : {}}
-                      >
-                        <input
-                          type="radio"
-                          name={`idcc-${emp.siren}`}
-                          value={c.idcc}
-                          checked={idccOverride === c.idcc}
-                          onChange={() => onIdccOverride(emp.siren, c.idcc)}
-                        />
-                        <span className="idcc-option-badge" style={{ background: c.fonds.couleur }}>
-                          {c.fonds.nom}
-                        </span>
-                        <span className="idcc-option-label">{c.label}</span>
-                      </label>
-                    ))}
-                    <label className="idcc-option">
-                      <input
-                        type="radio"
-                        name={`idcc-${emp.siren}`}
-                        value=""
-                        checked={hasOverride && idccOverride === null}
-                        onChange={() => onIdccOverride(emp.siren, null)}
-                      />
-                      <span className="idcc-option-label idcc-option-label--none">
-                        Autre convention / non concerné
-                      </span>
-                    </label>
-                  </div>
+                  <p className="idcc-manual-hint">
+                    {hintNonCouvert} Cet employeur n'est pas pris en compte dans l'estimation.
+                    Si la convention déclarée est erronée, les droits ne s'ouvrent qu'après
+                    régularisation par l'employeur.
+                  </p>
                 </div>
               )}
             </div>
