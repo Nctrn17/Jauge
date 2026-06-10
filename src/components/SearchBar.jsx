@@ -141,6 +141,7 @@ export function SearchBar({ onSelect, alreadyAdded, suggestions }) {
           ref={inputRef}
           type="text"
           className="search-input"
+          aria-label="Rechercher un employeur par nom, SIREN ou SIRET"
           placeholder="Nom de l'employeur, SIREN ou SIRET"
           value={query}
           onChange={handleChange}

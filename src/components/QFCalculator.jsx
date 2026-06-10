@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { RFRHelp } from './RFRHelp'
 import { calculerQFFNAS } from '../data/baremes-fnas'
 
-function Stepper({ value, onChange, min = 0, max = 10 }) {
+function Stepper({ value, onChange, min = 0, max = 10, label }) {
   const n = parseInt(value) || 0
   return (
     <div className="qf-stepper">
@@ -20,6 +20,7 @@ function Stepper({ value, onChange, min = 0, max = 10 }) {
       <input
         type="number"
         className="qf-stepper-input"
+        aria-label={label}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onBlur={(e) => onChange(String(Math.max(min, Math.min(max, parseInt(e.target.value) || 0))))}
@@ -109,8 +110,8 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
   return (
     <div className="qf-calculator">
       <div className="qf-field">
-        <label className="qf-label">Situation familiale</label>
-        <select className="qf-select" value={situation} onChange={(e) => setSituation(e.target.value)}>
+        <label className="qf-label" htmlFor="qf-situation">Situation familiale</label>
+        <select id="qf-situation" className="qf-select" value={situation} onChange={(e) => setSituation(e.target.value)}>
           {SITUATIONS.map((s) => (
             <option key={s.value} value={s.value}>{s.label}</option>
           ))}
@@ -121,12 +122,12 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
 
       <div className="qf-row">
         <div className="qf-field">
-          <label className="qf-label">
+          <label className="qf-label" htmlFor="qf-rfr">
             Revenu Fiscal de Référence (RFR)
-          
+
           </label>
           <div className="qf-input-wrapper">
-            <input type="number" inputMode="numeric" className="qf-input" placeholder="ex : 18 000"
+            <input id="qf-rfr" type="number" inputMode="numeric" className="qf-input" placeholder="ex : 18 000"
               value={rfrOD} onChange={(e) => setRfrOD(e.target.value)} min="0" />
             <span className="qf-unit">€</span>
           </div>
@@ -134,11 +135,11 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
 
         {aConjoint && (
           <div className="qf-field">
-            <label className="qf-label">
+            <label className="qf-label" htmlFor="qf-rfr-conjoint">
               RFR conjoint·e si déclaration séparée
             </label>
             <div className="qf-input-wrapper">
-              <input type="number" inputMode="numeric" className="qf-input" placeholder="ex : 12 000"
+              <input id="qf-rfr-conjoint" type="number" inputMode="numeric" className="qf-input" placeholder="ex : 12 000"
                 value={rfrAD} onChange={(e) => setRfrAD(e.target.value)} min="0" />
               <span className="qf-unit">€</span>
             </div>
@@ -162,12 +163,12 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
           <div className="qf-row">
             <div className="qf-field">
               <label className="qf-label">Enfants en garde exclusive</label>
-              <Stepper value={enfantsExclusifs} onChange={setEnfantsExclusifs} />
+              <Stepper value={enfantsExclusifs} onChange={setEnfantsExclusifs} label="Nombre d'enfants en garde exclusive" />
               <span className="qf-parts-hint">+0,5 part par enfant</span>
             </div>
             <div className="qf-field">
               <label className="qf-label">Enfants en garde alternée</label>
-              <Stepper value={enfantsAlternee} onChange={setEnfantsAlternee} />
+              <Stepper value={enfantsAlternee} onChange={setEnfantsAlternee} label="Nombre d'enfants en garde alternée" />
               <span className="qf-parts-hint">+0,25 part par enfant</span>
             </div>
           </div>
