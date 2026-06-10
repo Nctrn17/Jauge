@@ -1,4 +1,4 @@
-// Barèmes CASC-SVP - Chapitre C (01/04/2026)
+// Barèmes CASC-SVP - Chapitre C (01/04/2026, opération été alignée le 10/06/2026)
 // Axe 1 : Tranche QF (6 paliers)
 // Axe 2 : Tranche registre du personnel (1 à 8+)
 
@@ -54,14 +54,8 @@ export const BAREME_COLONIES = [
 ]
 
 // Opération spéciale été - hors partenaires
-export const BAREME_ETE = [
-  [ 25,  30,  36,  44,  80, 104, 136, 180],
-  [ 22,  27,  33,  40,  76,  99, 129, 170],
-  [ 20,  24,  29,  35,  70,  91, 119, 160],
-  [ 16,  20,  24,  29,  60,  78, 102, 140],
-  [ 10,  12,  15,  18,  30,  39,  51,  70],
-  [  4,   5,   6,   8,  20,  26,  34,  50],
-]
+// Depuis le 10/06/2026, plafonds identiques au barème partenaires permanents
+export const BAREME_ETE = BAREME_PARTENAIRES
 
 // Retourne l'index du palier QF (0-5) pour un QF donné
 // QF est arrondi au supérieur avant lookup
