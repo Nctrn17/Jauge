@@ -1,12 +1,8 @@
-import { useState, useEffect, lazy, Suspense } from 'react'
-import { LandingPage } from './components/LandingPage'
+import { useState, useEffect } from 'react'
+import RideauApp from './RideauApp'
 import { ContactModal } from './components/ContactModal'
 
-const SimulatorApp = lazy(() => import('./SimulatorApp'))
-
 export default function App() {
-  const [vue, setVue] = useState(() =>
-    new URLSearchParams(window.location.search).has('s') ? 'simulator' : 'landing')
   const [contactFromUrl, setContactFromUrl] = useState(false)
 
   useEffect(() => {
@@ -22,13 +18,7 @@ export default function App() {
 
   return (
     <>
-      {vue === 'landing' ? (
-        <LandingPage onStart={() => setVue('simulator')} />
-      ) : (
-        <Suspense fallback={null}>
-          <SimulatorApp onHome={() => setVue('landing')} />
-        </Suspense>
-      )}
+      <RideauApp />
       {contactFromUrl && <ContactModal onClose={() => setContactFromUrl(false)} />}
     </>
   )

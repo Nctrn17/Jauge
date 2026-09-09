@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { couleurMois, encreSurMois } from '../data/rampe'
 
 const NOMS_MOIS = [
   '', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
@@ -75,9 +76,9 @@ export function MonthSelector({ fonds, employeur, selection, onChange, tailleSal
               key={k}
               className={`month-btn ${checked ? 'month-btn--active' : ''} ${futur ? 'month-btn--futur' : ''}`}
               style={checked && !futur ? {
-                background: fonds.couleur,
-                borderColor: fonds.couleur,
-                color: 'white',
+                background: couleurMois(item.mois),
+                borderColor: couleurMois(item.mois),
+                color: encreSurMois(item.mois),
               } : {}}
               onClick={() => toggleMois(item)}
               type="button"

@@ -70,10 +70,8 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
   const [handicapAD, setHandicapAD] = useState(iv.handicapAD ?? false)
   const [conjointActif, setConjointActif] = useState(iv.conjointActif ?? false)
 
-  const hasExistingDetail = (parseInt(iv.enfantsExclusifs) || 0) > 0
-    || (parseInt(iv.enfantsAlternee) || 0) > 0
-    || iv.handicapOD || iv.handicapAD
-  const [showMore, setShowMore] = useState(hasExistingDetail)
+  // Enfants, handicap et conjoint pèsent sur le nombre de parts, donc sur le
+  // QF et sur le taux de prise en charge : ce bloc reste ouvert.
 
   const onResultRef = useRef(onResult)
   useEffect(() => { onResultRef.current = onResult })
@@ -149,18 +147,14 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
 
       
 
-      {/* Phase 3 : enfants, handicap, conjoint actif - masquée par défaut */}
-      {!showMore ? (
-        <button
-          type="button"
-          className="qf-show-more"
-          onClick={() => setShowMore(true)}
-        >
-          Enfants, handicap, situation spécifique… Affiner mon estimation
-        </button>
-      ) : (
-        <div className="qf-more">
-          <div className="qf-row">
+      {/* Enfants, handicap, conjoint : ce sont les parts fiscales, donc le taux. */}
+      <div className="qf-more">
+        <span className="qf-more-title">Affiner mon estimation</span>
+        <p className="qf-more-lede">
+          Chaque enfant et chaque situation de handicap ajoute des parts fiscales,
+          ce qui abaisse le quotient familial et augmente votre taux de prise en charge.
+        </p>
+        <div className="qf-row">
             <div className="qf-field">
               <label className="qf-label">Enfants en garde exclusive</label>
               <Stepper value={enfantsExclusifs} onChange={setEnfantsExclusifs} label="Nombre d'enfants en garde exclusive" />
@@ -194,8 +188,7 @@ export function QFCalculator({ onResult, showFNASFields = false, initialValues =
               </label>
             </div>
           )}
-        </div>
-      )}
+      </div>
 
       {qf !== null && (
         <div className="qf-preview">
