@@ -6,7 +6,7 @@ export const FONDS_MAP = {
     nom: 'CASC-SVP',
     nomComplet: "Comité d'Action Sociale et Culturelle du Spectacle Vivant Privé",
     url: 'https://www.casc-svp.fr',
-    couleur: '#7c3aed',
+    couleur: '#3E152A',
     convention: 'Spectacle vivant privé',
     trancheMax: 8,
     periodeRef: genererMois(1, 2025, 12, 2025),
@@ -16,7 +16,7 @@ export const FONDS_MAP = {
     nom: 'FNAS',
     nomComplet: 'Fonds National d\'Activités Sociales',
     url: 'https://fnas.net',
-    couleur: '#0284c7',
+    couleur: '#8F3F4C',
     convention: 'Entreprises artistiques et culturelles (CCNEAC)',
     trancheMax: 6,
     // Calendrier annuel depuis 2026 : la présence de nov–déc 2025 entre via
